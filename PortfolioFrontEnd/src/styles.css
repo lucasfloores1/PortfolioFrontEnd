@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 * {
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
@@ -14,7 +16,7 @@
 }
 
 .container {
-    justify-content: space-between;
+    justify-content: flex-start;
     display: flex;
     flex-wrap: wrap;
     max-width: 1000px;
@@ -74,6 +76,17 @@
     font-size: 15px;
     text-decoration: none;
     line-height: 30px;
+}
+.edit-button{
+    height: 22px;
+    width: 22px;
+}
+
+.edit-button svg{
+    width: 22px;
+    height: 22px;
+    color: #336;
+    cursor: pointer;
 }
 
 #about-title{
