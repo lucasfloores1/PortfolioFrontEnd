@@ -77,19 +77,30 @@
     text-decoration: none;
     line-height: 30px;
 }
-.edit-button{
-    height: 22px;
-    width: 22px;
+
+/* .edit-button{
+    height: 25px;
+    width: 25px;
 }
 
 .edit-button svg{
-    width: 22px;
-    height: 22px;
+    width: 25px;
+    height: 25px;
     color: #336;
     cursor: pointer;
+    transition: color 0.2s ease-out;
 }
 
-#about-title{
+.edit-button svg:hover {
+    color: #000;
+}
+
+.edit-button svg:active {
+    scale: 0.9;
+    color: #000;
+} */
+
+/* #about-title{
     padding: 5px;
     flex-grow: 8;
     order: 1;
@@ -105,7 +116,7 @@
     font-size: 15px;
     text-decoration: none;
     order:3;
-    flex-basis: 100%;
+    flex-basis: 100%; 
 }
 #about__button{
     margin-right: 20px;
@@ -114,9 +125,19 @@
     order: 2;
     height: fit-content;
     flex-direction: row-reverse;
-}
-.about{
+} */
+
+#about-text{
     width: 100%;
+}
+
+#about-title{
+    width: 80%;
+}
+
+.about{
+    justify-content: space-between;
+    width: 95%;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 10px;

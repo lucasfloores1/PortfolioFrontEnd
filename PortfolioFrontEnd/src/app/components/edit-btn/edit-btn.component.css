@@ -1,0 +1,21 @@
+.edit-button{
+    height: 25px;
+    width: 25px;
+}
+
+.edit-button svg{
+    width: 25px;
+    height: 25px;
+    color: #336;
+    cursor: pointer;
+    transition: color 0.2s ease-out;
+}
+
+.edit-button svg:hover {
+    color: #000;
+}
+
+.edit-button svg:active {
+    scale: 0.9;
+    color: #000;
+}
