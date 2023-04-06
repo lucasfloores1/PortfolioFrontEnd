@@ -3,27 +3,27 @@
         {
             "name" : "Lucas Flores",
             "description" : "Desarrollador Web Full-Stack Jr.",
-            "banner-url" : "https://wallpapercrafter.com/desktop/200346-colorful-lines-of-code-on-a-computer-screencss-cod.jpg",
-            "pfp-url" : "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            "banner_url" : "https://wallpapercrafter.com/desktop/200346-colorful-lines-of-code-on-a-computer-screencss-cod.jpg",
+            "pfp_url" : "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
         }
     ],
 
     "about": [
         {
-            "about-text" : "Desarrolador web full stack jr. dando sus primeros pasos y buscando sus primer trabajo en IT"
+            "about_text" : "Desarrolador web full stack jr. dando sus primeros pasos y buscando sus primer trabajo en IT"
         }
     ],
 
     "education" : [
         {
-            "img-url" : "",
+            "img_url" : "",
             "institute" : "Universidad Tecnológica Nacional",
             "title" : "Ingenieria en Sistemas (Incompleto)",
             "time" : "2019-2021"
         },
         
         {
-            "img-url" : "",
+            "img_url" : "",
             "institute" : "Argentina Programa",
             "title" : "Desarrolador Web Full-Stack Junior",
             "time" : "2022-2023"
@@ -32,7 +32,7 @@
 
     "experience" : [
         {
-            "img-url" : "",
+            "img_url" : "",
             "name" : "Olimpiadas Informáticas Argentina",
             "company" : "Sexto Puesto",
             "time" : "2014"
