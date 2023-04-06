@@ -1,0 +1,36 @@
+<div class="container" id="third-section">
+    <div class="education">
+        <div id="education-title">
+            <h2>Educación</h2>
+        </div>
+        <div class="button" id="education__add-button">
+            <app-add-btn></app-add-btn>
+        </div>
+        <div class="education-card-list">
+            <app-education-card
+                *ngFor = "let education of educations"
+                [education] = "education"
+            ></app-education-card>
+        </div>
+        <!-- <div id="education-card">
+            <div class="education__img">
+                <img class="education-card__img" src="UTN_logo.jpg">
+            </div>
+            <div class="education-card__text">
+                <div class="education-card__institute">
+                    <p>Universidad Tecnológica Nacional</p>
+                </div>
+                <div class="education-card__title">
+                    <p>Ingenieria en Sistemas (Incompleto)</p>
+                </div>
+                <div class="education-card__time">
+                    <p>2019-2021</p>
+                </div>
+            </div>
+            <div class="education-card__buttons">
+                <button class="education-card__del-button">del</button>
+                <button class="education-card__edit-button">edit</button>
+            </div>
+        </div> -->
+    </div>
+</div>

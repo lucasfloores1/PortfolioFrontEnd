@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Info } from '../../Info';
 
 @Component({
   selector: 'app-info',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./info.component.css']
 })
 export class InfoComponent {
+
+
+constructor(){}
+
+ngOnInit () : void{
+
+}
+
 
 }
