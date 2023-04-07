@@ -11,6 +11,7 @@ import { EducationComponent } from './components/education/education.component';
 import { EducationCardComponent } from './components/education-card/education-card.component';
 import { AddBtnComponent } from './components/add-btn/add-btn.component';
 import { DeleteBtnComponent } from './components/delete-btn/delete-btn.component';
+import { InfoEditComponent } from './components/info-edit/info-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { DeleteBtnComponent } from './components/delete-btn/delete-btn.component
     EducationComponent,
     EducationCardComponent,
     AddBtnComponent,
-    DeleteBtnComponent
+    DeleteBtnComponent,
+    InfoEditComponent
   ],
   imports: [
     BrowserModule,
