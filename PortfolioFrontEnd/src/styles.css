@@ -144,7 +144,9 @@
 .education{
     justify-content: space-between;
     width: 95%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(3, auto);
     flex-wrap: wrap;
     margin-bottom: 10px;
     margin-left: 20px;
@@ -156,6 +158,8 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
+    grid-column: 1/9;
+    grid-row: 3/4;
 }
 
 .education-list{
@@ -168,6 +172,8 @@
 #education-title{
     width: 80%;
     height: fit-content;
+    grid-column: 1/8;
+    grid-row: 1/2;
 }
 #education-title h2{
     font-size: 22px;
@@ -176,15 +182,20 @@
 #education__add-button{
     margin-right: 20px;
     display: flex;
-
     height: fit-content;
     flex-direction: row-reverse;
+    grid-column: 8/9;
+    grid-row: 1/2;
 }
+
 #education-card {
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
     padding: 3px;
-    justify-content: space-evenly;
+    grid-template-columns: repeat(10, 1fr) ;
+    width: 100%;
+    justify-content: space-between;
+
 }
 .education__img{
     border: 2px solid #336;
@@ -194,6 +205,7 @@
     align-items: center;
     width: 5.5rem;
     height: 5.5rem;
+    grid-column: 1/2;
 
 }
 .education__img img{
@@ -208,6 +220,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    grid-column: 2/10;
 }
 .education-card__institute a{
     padding: 2px;
@@ -221,16 +234,91 @@
     padding: 2px;
 }
 .education-card__buttons{
-    width: fit-content;
+
     margin-right: 20px;
     display: flex;
     height: fit-content;
     justify-content: right;
+    grid-column: 10/11;
 }
 
-#third-section{
+.education-add-form {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 500px;
+    grid-column: 1/9;
+    grid-row: 2/3;
+}
+
+.form-control {
+    padding: 10px 0 0;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form__field {
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    background: transparent;
+    transition: 0.3s;
+}
+
+.form__field:focus{
+    color: #000;
+    border-bottom: 2px solid #336 ;
+}
+
+.form__field:focus::placeholder{
+    color: #336
+}
+
+
+.form__label {
+    display: none;
+}
+
+
+  #third-section{
     width: 1000px;
 }
+
+.submit-button{
+
+    margin-top: 10px;
+    padding: 13px 23px;
+    background-color: #fff;
+    border: 1px solid gray;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: gray;
+    cursor: pointer;
+    font-size: 1.3rem;
+    text-decoration: none;
+    transition: 0.2s;
+
+}
+.submit-button:focus{
+    border-color: #336;
+}
+
+.submit-button:hover{
+    border-color: #336;
+    color: #336;
+    background-color: rgb(198, 198, 233);
+}
+
+.submit-button:active{
+    border-color: #336;
+    color: #336;
+    background-color: rgb(198, 198, 233);
+    transform: scale(0.95);
+}
+
 
 .experience{
     margin-bottom: 10px;

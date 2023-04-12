@@ -15,9 +15,6 @@ export class InfoEditComponent implements OnInit {
 
   ngOnInit() : void {
 
-    console.log(this.info)
-
+    
   }
-
-
 }

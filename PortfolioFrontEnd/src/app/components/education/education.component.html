@@ -6,10 +6,15 @@
         <div class="button" id="education__add-button">
             <app-add-btn></app-add-btn>
         </div>
+        <app-add-education
+            (onAddEducation)="addEducation($event)"
+        >
+        </app-add-education>
         <div class="education-card-list">
             <app-education-card
                 *ngFor = "let education of educations"
                 [education] = "education"
+                (onDeleteEducation) = "deleteEducation(education)"
             ></app-education-card>
         </div>
         <!-- <div id="education-card">
