@@ -4,7 +4,11 @@
             <h2>Educación</h2>
         </div>
         <div class="button" id="education__add-button">
-            <app-add-btn></app-add-btn>
+        <app-add-btn
+            (click)="toggleAddEducation()"
+        >
+
+        </app-add-btn>
         </div>
         <app-add-education
             (onAddEducation)="addEducation($event)"
@@ -15,6 +19,7 @@
                 *ngFor = "let education of educations"
                 [education] = "education"
                 (onDeleteEducation) = "deleteEducation(education)"
+                (onEditEducation) = "editEducation($event)"
             ></app-education-card>
         </div>
         <!-- <div id="education-card">

@@ -5,7 +5,7 @@
     margin-right: 10px;
 }
 
-.edit-button svg{
+.edit-button fa-icon{
     width: 25px;
     height: 25px;
     color: #336;
@@ -13,11 +13,11 @@
     transition: color 0.2s ease-out;
 }
 
-.edit-button svg:hover {
+.edit-button fa-icon:hover {
     color: #000;
 }
 
-.edit-button svg:active {
+.edit-button fa-icon:active {
     scale: 0.9;
     color: #000;
 }

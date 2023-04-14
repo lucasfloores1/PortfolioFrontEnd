@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Education } from '../../Education';
 import { DataService } from 'src/app/services/data.service';
+import { Subscription } from 'rxjs';
+import { UiService } from 'src/app/services/ui.service';
 
 
 @Component({
@@ -10,9 +12,13 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class EducationComponent implements OnInit{
   educations : Education[]
+  showAddEducation : boolean = false;
+  subscription : Subscription;
 
-  constructor(private dataService : DataService){
-    this.educations = []
+  constructor(private dataService : DataService, private uiService : UiService){
+    this.educations = [];
+    
+    this.subscription = this.uiService.onToggleAdd().subscribe(value => this.showAddEducation = value)
   }
 
   ngOnInit() : void {
@@ -36,5 +42,17 @@ export class EducationComponent implements OnInit{
     ))
   }
 
-  
+  toggleAddEducation(){
+    this.uiService.toggleAddEducation();
+  }
+
+  editEducation(education : Education){
+    console.log(education)
+    this.dataService.editEducation(education).subscribe((education)=>(
+      this.updateEducations(education)
+    ))
+  }
+  updateEducations(education : Education) : void {
+    this.educations[education.id!-1] = education
+  }
 }

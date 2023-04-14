@@ -4,19 +4,21 @@
     width: 25px;
 }
 
-.add-button svg{
+.add-button fa-icon{
     width: 25px;
     height: 25px;
     color: #336;
     cursor: pointer;
     transition: color 0.2s ease-out;
+
 }
 
-.add-button svg:hover {
+.add-button fa-icon:hover {
     color: #000;
 }
 
-.add-button svg:active {
+.add-button fa-icon:active {
     scale: 0.9;
     color: #000;
 }
+

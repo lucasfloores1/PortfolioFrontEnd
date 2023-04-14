@@ -28,11 +28,22 @@ export class DataService {
 
     const url : string = `${this.apiUrl}/${education.id}`
 
+    console.log(url)
+
     return this.http.delete<Education>(url);
   }
 
   addEducation(education : Education): Observable<Education>{
      return this.http.post<Education>(this.apiUrl, education, httpOptions)
+  }
+
+  editEducation(education : Education): Observable<Education>{
+    
+    const url : string = `${this.apiUrl}/${education.id}`
+
+    console.log(education)
+
+    return this.http.put<Education>(url, education, httpOptions)
   }
 
 }

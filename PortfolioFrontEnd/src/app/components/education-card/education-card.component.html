@@ -13,8 +13,15 @@
                     <p>{{education.time}}</p>
         </div>
     </div>
+    <app-education-edit
+        [educationimg]="education.img_url"
+        [educationid]="education.id"
+        (onEditedEducation)="onEditedEducation($event)"
+    ></app-education-edit>
     <div class="education-card__buttons">
-        <app-edit-btn></app-edit-btn>
+        <app-edit-btn
+            (click)="toggleEditEducation()"
+        ></app-edit-btn>
         <app-delete-btn
         (click) = "onDelete(education)"
         >

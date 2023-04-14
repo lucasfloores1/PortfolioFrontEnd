@@ -14,6 +14,8 @@ import { AddBtnComponent } from './components/add-btn/add-btn.component';
 import { DeleteBtnComponent } from './components/delete-btn/delete-btn.component';
 import { InfoEditComponent } from './components/info-edit/info-edit.component';
 import { AddEducationComponent } from './components/add-education/add-education.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EducationEditComponent } from './components/education-edit/education-edit.component';
 
 @NgModule({
   declarations: [
@@ -26,15 +28,18 @@ import { AddEducationComponent } from './components/add-education/add-education.
     AddBtnComponent,
     DeleteBtnComponent,
     InfoEditComponent,
-    AddEducationComponent
+    AddEducationComponent,
+    EducationEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

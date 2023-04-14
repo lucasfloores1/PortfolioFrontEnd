@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Education } from 'src/app/Education';
-
+import { UiService } from 'src/app/services/ui.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-add-education',
@@ -9,12 +10,20 @@ import { Education } from 'src/app/Education';
 })
 export class AddEducationComponent implements OnInit{
   @Output() onAddEducation : EventEmitter<Education> = new EventEmitter();
+
   institute: string = "";
   title: string = "";
   time: string = "";
   img_url: string = "";
 
-  constructor(){}
+  showAddEducation : boolean = false;
+  subscription?: Subscription;
+
+  constructor( private uiService : UiService ){ 
+
+    this.subscription = this.uiService.onToggleAdd().subscribe(value => this.showAddEducation = value)
+
+   }
 
   ngOnInit(): void {
   
