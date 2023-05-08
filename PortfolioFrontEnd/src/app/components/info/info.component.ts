@@ -1,8 +1,8 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Info } from '../../Info';
 import { InfoService } from 'src/app/services/info.service';
-import { faPenToSquare, faXmarkCircle} from '@fortawesome/free-regular-svg-icons';
-import { info } from 'ngx-bootstrap-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { InfoEditComponent } from '../info-edit/info-edit.component';
 
 @Component({
   selector: 'app-info',
@@ -13,11 +13,7 @@ export class InfoComponent implements OnInit {
   
   information : Info[] = []
 
-  faPenToSquare = faPenToSquare ;
-  faXmarkCircle = faXmarkCircle;
-  displayEditForm : boolean = false;
-
-  constructor(private infoService : InfoService , private cdr: ChangeDetectorRef){ 
+  constructor( public dialog : MatDialog ,private infoService : InfoService , private cdr: ChangeDetectorRef){ 
     
   }
 
@@ -28,7 +24,5 @@ export class InfoComponent implements OnInit {
     })
   }
 
-  toggleDisplayEditForm(): void {
-    this.displayEditForm = !this.displayEditForm;    
-  }
+
 }

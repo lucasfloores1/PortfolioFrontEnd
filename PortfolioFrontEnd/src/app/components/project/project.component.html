@@ -1,4 +1,4 @@
-<div class="container" id="fifth-section">
+<!-- <div class="container" id="fifth-section">
     <div class="proyects">
         <div id="proyects-title">
             <h2>Proyectos</h2>
@@ -18,6 +18,27 @@
                 *ngFor ="let project of projects"
                 [project] = "project"
                 (onEditProject)="updateProject($event)"
+                (onDeleteProject)="deleteProject(project)"
+            ></app-project-card>
+        </div>
+    </div>
+</div> -->
+
+<div class="container" id="fifth-section">
+    <div class="proyects">
+        <div id="proyects-title">
+            <h2 mat-card-title class="title">Proyectos</h2>
+        </div>
+        <div class="button" id="proyects__add-button">
+            <div class="add-button">
+                <button mat-mini-fab color="primary" (click)="openDialog()" > <mat-icon>add</mat-icon> </button>
+            </div> 
+        </div>
+        <div class="proyects-card-list">
+            <app-project-card
+                *ngFor ="let project of projects"
+                [project] = "project"
+                (updatedProject)="updateProject($event)"
                 (onDeleteProject)="deleteProject(project)"
             ></app-project-card>
         </div>

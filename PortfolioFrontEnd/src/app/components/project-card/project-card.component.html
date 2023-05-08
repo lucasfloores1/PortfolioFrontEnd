@@ -1,4 +1,4 @@
-<div id="proyects-card">
+<!-- <div id="proyects-card">
     <div class="proyects-card__text">
         <div class="proyects-card__institute">
             <p>{{project.name}}</p>
@@ -21,4 +21,21 @@
             <fa-icon *ngIf="displayEditForm" (click) = "toggleDisplayEditForm()" [icon]="faXmarkCircle" size ="2x"></fa-icon>
         </div>
     </div>
-</div>
+</div> -->
+
+<mat-card class="project-card">
+    <mat-card-content>
+        <div class="card">
+            <div class="text">
+                <div class="title">
+                    <mat-card-title>{{project.name}}</mat-card-title><button mat-mini-fab color="primary" (click)="redirectToProject(project)"><mat-icon>link</mat-icon></button>
+                </div>
+                <mat-card-subtitle>{{project.description}}</mat-card-subtitle>
+            </div>
+            <div class="buttons">
+                <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
+                <button mat-mini-fab color="primary" (click)="onDelete(project)" ><mat-icon>delete</mat-icon></button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

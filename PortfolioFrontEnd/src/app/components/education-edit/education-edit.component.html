@@ -1,40 +1,37 @@
-<form class="education-edit-form" (ngSubmit)="onSubmit()">
-
-    <div class="edit-form-container">
-        <div class="form-control-edit">
-            <input class="form__field-edit"
-                type="text"
-                name="institute"
-                id="institute"
-                placeholder="Instituto"
-                [(ngModel)]="institute"
-            >
-            <label for="institute" class="form__label">Institute</label>
-        </div>
-
-        <div class="form-control-edit">
-            <input class="form__field-edit"
-                type="text"
-                name="title"
-                id="title"
-                placeholder="Carrerra"
-                [(ngModel)]="title"
-            >
-            <label for="title" class="form__label">Carrera</label>
-        </div>
-
-        <div class="form-control-edit">
-            <input class="form__field-edit"
-                type="text"
-                name="time"
-                id="time"
-                placeholder="Tiempo"
-                [(ngModel)]="time"
-            >
-            <label for="time" class="form__label">Período</label>
-        </div>
+<h2 mat-dialog-title align="center">Agregar Nueva Educacion</h2>
+<mat-divider></mat-divider>
+<div class="addForm">
+    <div class="form-container">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Instituto</mat-label>
+            <input matInput [(ngModel)]="institute">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Título</mat-label>
+            <input matInput [(ngModel)]="title">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Período de tiempo</mat-label>
+            <input matInput [(ngModel)]="time">
+        </mat-form-field>
     </div>
-
-    <input type="submit" value="Confirmar" class="submit-button-edit">
-
-</form>
+    <mat-divider></mat-divider>
+    <mat-card>
+        <mat-card-content>
+            <div class="card-preview">
+                <div class="img">
+                    <img [src]="data.imgurl" alt="Imagen">
+                </div>
+                <div class="text">
+                    <p mat-card-title>{{institute}}</p>
+                    <p mat-card-title>{{title}}</p>
+                    <p mat-card-subtitle>{{time}}</p>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="buttons">
+    <button class="add"mat-raised-button color="primary" (click)="closeDialog()">Confirmar</button>
+    <button class="cancel" mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+</div>      

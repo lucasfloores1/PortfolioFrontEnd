@@ -1,6 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Experience } from 'src/app/Experience';
-import { faPenToSquare, faXmarkCircle, faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { ExperienceEditComponent } from '../experience-edit/experience-edit.component';
 
 @Component({
   selector: 'app-experience-card',
@@ -9,24 +10,15 @@ import { faPenToSquare, faXmarkCircle, faTrashCan } from '@fortawesome/free-regu
 })
 export class ExperienceCardComponent  implements OnInit{
  
-  @Output() onEditExperience : EventEmitter<Experience> = new EventEmitter
+  @Output() updatedExperience : EventEmitter<Experience> = new EventEmitter
 
   @Output() onDeleteExperience : EventEmitter<Experience> = new EventEmitter
   
-  @Input() experience : Experience =  {
-    id : 0,
-    imgurl: '',
-    name: '',
-    company: '',
-    time: '',
-  };
+  @Input() experience : Experience =  { id : 0, imgurl: '', name: '', company: '', time: '' };
 
-  faPenToSquare = faPenToSquare ;
-  faXmarkCircle = faXmarkCircle;
-  faTrashCan = faTrashCan;
-  displayEditForm : boolean = false;
+  updatingExperience : Experience
 
-  constructor(){
+  constructor( public dialog : MatDialog ){
 
   }
 
@@ -34,16 +26,29 @@ export class ExperienceCardComponent  implements OnInit{
     
   }
 
-  toggleDisplayEditForm(): void {
-    this.displayEditForm = !this.displayEditForm;    
-  }
-
   onDelete(experience : Experience): void {
     this.onDeleteExperience.emit (experience)
   }
 
-  onEditedExperience(experience : Experience) : void {
-    this.onEditExperience.emit(experience)
+  openDialog(){
+
+    this.updatingExperience = this.experience
+    const dialogRef = this.dialog.open( ExperienceEditComponent, {
+
+      width: '1000px',
+      data : this.updatingExperience,
+      height : '600px',
+      disableClose : true,
+      enterAnimationDuration : 350,
+
+    } )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.updatedExperience.emit(result)
+      }
+    });
+
   }
 
 

@@ -1,6 +1,7 @@
 import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Project } from 'src/app/Project';
-import { faPenToSquare, faXmarkCircle, faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectEditComponent } from '../project-edit/project-edit.component';
 
 @Component({
   selector: 'app-project-card',
@@ -9,7 +10,7 @@ import { faPenToSquare, faXmarkCircle, faTrashCan } from '@fortawesome/free-regu
 })
 export class ProjectCardComponent {
 
-  @Output() onEditProject : EventEmitter<Project> = new EventEmitter
+  @Output() updatedProject : EventEmitter<Project> = new EventEmitter
 
   @Output() onDeleteProject : EventEmitter<Project> = new EventEmitter
   
@@ -17,16 +18,12 @@ export class ProjectCardComponent {
     id : 0,
     description: '',
     name: '',
+    link: '',
   };
 
-  @Output() 
+  private updatingProject : Project;
 
-  faPenToSquare = faPenToSquare ;
-  faXmarkCircle = faXmarkCircle;
-  faTrashCan = faTrashCan;
-  displayEditForm : boolean = false;
-
-  constructor(){
+  constructor( public dialog : MatDialog ){
 
   }
 
@@ -34,17 +31,38 @@ export class ProjectCardComponent {
     
   }
 
-  toggleDisplayEditForm(): void {
-    this.displayEditForm = !this.displayEditForm;
-  }
 
   onDelete(project : Project): void {
     this.onDeleteProject.emit (project)
   }
 
-  onEditedProject(project : Project) : void {
+
+  openDialog(){
+
+    this.updatingProject = this.project
+    const dialogRef = this.dialog.open( ProjectEditComponent, {
+
+      width: '1000px',
+      data : this.updatingProject,
+      height : '525px',
+      disableClose : true,
+      enterAnimationDuration : 350,
+
+    } )
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.updatedProject.emit(result)
+      }
+    });
+
+  }
+
+  redirectToProject(project : Project) : void {
+    if (project.link){
+      window.open( project.link, '_blank' )
+    }
     console.log(project)
-    this.onEditProject.emit(project)
   }
 
 }

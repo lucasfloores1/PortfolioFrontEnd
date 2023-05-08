@@ -1,5 +1,7 @@
-import { Component, Output, EventEmitter} from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Project } from 'src/app/Project';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-project-add',
@@ -8,17 +10,9 @@ import { Project } from 'src/app/Project';
 })
 export class ProjectAddComponent {
 
-  @Output() onCreateProject : EventEmitter<Project> = new EventEmitter
-
-  id: number  ;
-  name: string ;
-  description: string ;
   
-  constructor() {
-
-    this.id = 0 ;
-    this.name = "";
-    this.description = "";
+  constructor( public dialogRef: MatDialogRef<ProjectAddComponent>, 
+    @Inject(MAT_DIALOG_DATA) public data : Project ) {
 
   }
   
@@ -27,24 +21,14 @@ export class ProjectAddComponent {
     
   }
 
-  onSubmit(): void {
+  onNoClick() : void {
+    this.dialogRef.close()
+  }
 
-    if (this.description.length == 0 || this.name.length == 0){
-      alert("Debe rellenar todos los campos");
-      return
+  redirectToProject(url : string) : void {
+    if (url){
+      window.open( url, '_blank' )
     }
-
-
-    const newProject : Project ={
-
-      id : this.id ,
-      name : this.name,
-      description : this.description,
-
-    }
-
-    this.onCreateProject.emit(newProject)
-
   }
 
 }

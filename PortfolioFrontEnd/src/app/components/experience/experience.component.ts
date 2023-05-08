@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Experience } from 'src/app/Experience';
 import { ExperienceService } from 'src/app/services/experience.service';
-import { faXmarkCircle, faSquarePlus } from '@fortawesome/free-regular-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { ExperienceAddComponent } from '../experience-add/experience-add.component';
 
 @Component({
   selector: 'app-experience',
@@ -10,13 +11,11 @@ import { faXmarkCircle, faSquarePlus } from '@fortawesome/free-regular-svg-icons
 })
 export class ExperienceComponent implements OnInit {
 
-  faSquareXmark = faXmarkCircle;
-  faSquarePlus = faSquarePlus;
-  displayAddForm : boolean = false;
-  
   experiences : Experience[]
 
-  constructor ( private experienceService : ExperienceService ) {
+  private newExperience : Experience = { id: 0, imgurl : '' , company : '', name : '', time : '' }
+
+  constructor ( public dialog : MatDialog , private experienceService : ExperienceService ) {
 
     this.experiences = []
 
@@ -51,17 +50,32 @@ export class ExperienceComponent implements OnInit {
     
   }
 
-  onDisplayAddForm(): void {
-    this.displayAddForm = !this.displayAddForm
-  }
 
   createExperience(experience : Experience): void {
 
-    this.displayAddForm = !this.displayAddForm
     this.experienceService.createExperience(experience).subscribe( response =>{
       this.experiences.push(response)
    })
     
+  }
+
+  openDialog() : void {
+
+    const dialogRef = this.dialog.open ( ExperienceAddComponent , {
+
+      width: '1000px',
+      data : this.newExperience,
+      height : '650px',
+      disableClose : true,
+      enterAnimationDuration : 350,
+
+    } )
+
+    dialogRef.afterClosed().subscribe( response => { 
+      if (response){
+      this.experienceService.createExperience(response).subscribe( response => { this.experiences.push(response) } )}
+     })
+
   }
 
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Education } from '../../Education';
 import { EducationService } from 'src/app/services/education.service';
-import { faXmarkCircle, faSquarePlus } from '@fortawesome/free-regular-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEducationComponent } from '../add-education/add-education.component';
 

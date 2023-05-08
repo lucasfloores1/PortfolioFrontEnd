@@ -1,22 +1,38 @@
-.delete-button{
+.experience-card {
+    max-width: 1000px;
+    margin-bottom: 20px;
+}
+
+.card {
+    max-width: 1000px;
     display: flex;
-    height: 25px;
-    width: 25px;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
-.delete-button fa-icon{
-    width: 25px;
-    height: 25px;
-    color: #336;
-    cursor: pointer;
-    transition: color 0.2s ease-out;
+.img {
+    border: 2px solid #336;
+    border-radius: 20%;
+    overflow: hidden;
+    align-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 8rem;
 }
 
-.delete-button fa-icon:hover {
-    color: #000;
+.img img {
+    width: 98%;
+    height: 98%;
 }
 
-.delete-button fa-icon:active {
-    scale: 0.9;
-    color: #000;
+.text {
+    align-self: center;
+    padding-left: 20px;
+    font-size: 35px;
+    flex-grow: 5;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;    
 }

@@ -50,7 +50,7 @@ export class SkillsComponent implements OnInit {
   }
 
   updateSkill( updatedSkill : Skills ) : void {
-    this.skillsService.updateSkills(updatedSkill).subscribe( response => { console.log(response) } )
+    this.skillsService.updateSkills(updatedSkill)
   }
 
   deleteSkill( skill : Skills ) : void {

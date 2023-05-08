@@ -1,5 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Experience } from 'src/app/Experience';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { EducationEditComponent } from '../education-edit/education-edit.component';
 
 @Component({
   selector: 'app-experience-edit',
@@ -8,32 +10,31 @@ import { Experience } from 'src/app/Experience';
 })
 export class ExperienceEditComponent {
 
-  @Output() onEditedExperience : EventEmitter<Experience> = new EventEmitter();
-  
-  @Input() experienceimgurl : string = "";
-  @Input() experienceid : number = 0 ;
+  private updatedExperience : Experience;
 
-  name : string = '';
-  company : string = '';
-  time : string = '';
+  name : string = this.data.name;
+  company : string = this.data.company;
+  time : string = this.data.time;
 
-  onSubmit():void {
+  constructor( public dialogRef : MatDialogRef<EducationEditComponent> , @Inject(MAT_DIALOG_DATA) public data : Experience ){
 
-    if (this.company.length == 0 || this.name.length == 0 || this.time.length == 0){
-      alert("Debe rellenar todos los campos");
-      return
-    }
+    this.updatedExperience = data
 
-    const editedExperience : Experience = {
-      id: this.experienceid,
-      imgurl: this.experienceimgurl,
-      name : this.name,
-      company: this.company,
-      time: this.time,
-    }
+  }
 
-    this.onEditedExperience.emit(editedExperience)
 
+  closeDialog(){
+
+    this.data.name = this.name
+    this.data.company = this.company
+    this.data.time = this.time
+
+    this.dialogRef.close(this.data)
+
+  }
+
+  onNoClick() : void{
+    this.dialogRef.close();
   }
 
 }

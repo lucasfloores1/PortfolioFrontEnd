@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Education } from 'src/app/Education';
-import { Input, Output, EventEmitter } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -10,38 +10,31 @@ import { Input, Output, EventEmitter } from '@angular/core';
 })
 export class EducationEditComponent implements OnInit{
 
-  @Input() educationimg : string = "";
-  @Input() educationid : number = 0 ;
+  private updatedEducation : Education;
 
-  @Output() onEditedEducation : EventEmitter<Education> = new EventEmitter();
+  institute : string = this.data.institute;
+  title : string = this.data.title;
+  time : string = this.data.time;
   
-  institute : string = "";
-  title : string = "";
-  time : string = "";
+  constructor( public dialogRef : MatDialogRef<EducationEditComponent>, @Inject(MAT_DIALOG_DATA) public data : Education ){
 
-  
-  constructor( ){
+    this.updatedEducation = data
 
   }
 
   ngOnInit(): void {
   }
 
-  onSubmit(){
-    if (this.institute.length == 0 || this.title.length == 0 || this.time.length == 0){
-      alert("Debe rellenar todos los campos");
-      return
-    }
+  onNoClick() : void{
+    this.dialogRef.close();
+  }
 
-    const editedEducation = {
-      id: this.educationid,
-      imgurl: this.educationimg,
-      institute : this.institute,
-      title: this.title,
-      time: this.time,
-    }
+  closeDialog(){
+    this.data.institute = this.institute
+    this.data.title = this.title
+    this.data.time = this.time
 
-    this.onEditedEducation.emit(editedEducation)
+    this.dialogRef.close(this.data)
   }
 
 }

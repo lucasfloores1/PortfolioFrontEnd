@@ -1,31 +1,18 @@
-<div id="experience-card">
-    <div class="experience__img">
-        <img class="experience-card__img" [src]="experience.imgurl">
-    </div>
-    <div class="experience-card__text">
-        <div class="experience-card__institute">
-            <p>{{experience.name}}</p>
+<mat-card class="experience-card">
+    <mat-card-content>
+        <div class="card">
+            <div class="img">
+                <img mat-card-image [src]="experience.imgurl">
+            </div>
+            <div class="text">
+                <mat-card-title>{{experience.company}}</mat-card-title>
+                <mat-card-title>{{experience.name}}</mat-card-title>
+                <mat-card-subtitle>{{experience.time}}</mat-card-subtitle>
+            </div>
+            <div class="buttons">
+                <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
+                <button mat-mini-fab color="primary" (click)="onDelete(experience)" ><mat-icon>delete</mat-icon></button>
+            </div>
         </div>
-        <div class="experience-card__title">
-            <p>{{experience.company}}</p>
-        </div>
-        <div class="experience-card__time">
-            <p>{{experience.time}}</p>
-        </div>
-    </div>
-    <app-experience-edit 
-        *ngIf="displayEditForm" 
-        [experienceid]="experience.id"
-        [experienceimgurl]="experience.imgurl"
-        (onEditedExperience)="onEditedExperience($event)"
-    ></app-experience-edit>
-    <div class="experience-card__buttons">
-        <div class="delete-button">
-            <fa-icon (click) = "onDelete(experience)" [icon]="faTrashCan" size="2x"></fa-icon>
-        </div>
-        <div class="edit-button">
-            <fa-icon *ngIf="!displayEditForm" (click) = "toggleDisplayEditForm()" [icon]="faPenToSquare" size ="2x"></fa-icon>
-            <fa-icon *ngIf="displayEditForm" (click) = "toggleDisplayEditForm()" [icon]="faXmarkCircle" size ="2x"></fa-icon>
-        </div>
-    </div>
-</div>
+    </mat-card-content>
+</mat-card>

@@ -20,6 +20,6 @@
     flex-wrap: wrap;
     margin-top: 10px;
     width: 100%;
-    gap: 15px;
+    justify-content: space-around;
 
 }

@@ -1,6 +1,6 @@
 <div class="container" id="first-section" *ngIf="information">
     <div class="profile-background">
-        <img src="{{information[0].bannerurl}}">
+        <img *ngIf="information[0].bannerurl" src="{{information[0].bannerurl}}">
     </div>
     <div id="ordenador">
         <div class="profile-picture" *ngIf="information">
@@ -12,9 +12,5 @@
             <h1 id="info-name">{{information[0].name}}</h1>
             <div id="info-description">{{information[0].description}}</div>
         </div>
-    </div>
-    <div class="edit-button">
-        <fa-icon *ngIf="!displayEditForm" (click) = "toggleDisplayEditForm()" [icon]="faPenToSquare" size ="2x"></fa-icon>
-        <fa-icon *ngIf="displayEditForm" (click) = "toggleDisplayEditForm()" [icon]="faXmarkCircle" size ="2x"></fa-icon>
     </div>
 </div>

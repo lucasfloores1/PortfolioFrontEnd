@@ -24,10 +24,11 @@ export class SkillsEditComponent implements OnInit {
     { value:'warn', viewValue: 'Warn' },
   ]
 
-  valueSkill  = this.data.value;
-  colorSkill: string = this.data.color;
-  modeSpinner: ProgressSpinnerMode = 'determinate';
-  nameSkill: string = this.data.name;
+  valueSkill : number  = this.data.value;
+  colorSkill : string = this.data.color;
+  nameSkill : string = this.data.name;
+  
+  modeSpinner : ProgressSpinnerMode = 'determinate';
 
   constructor(public dialogRef: MatDialogRef<SkillsEditComponent>,  @Inject(MAT_DIALOG_DATA) public data: Skills
   ){
@@ -48,7 +49,6 @@ export class SkillsEditComponent implements OnInit {
     this.data.name = this.nameSkill
 
     this.dialogRef.close(this.data)
-    console.log(this.data)
 
   }
 }

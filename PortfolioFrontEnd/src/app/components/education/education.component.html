@@ -35,7 +35,7 @@
                 *ngFor = "let education of educations"
                 [education] = "education"
                 (onDeleteEducation) = "deleteEducation(education)"
-                (onEditEducation) = "updateEducation($event)"
+                (updatedEducation) = "updateEducation($event)"
             ></app-education-card>
         </div>
     </div>

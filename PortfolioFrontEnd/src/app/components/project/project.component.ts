@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { faXmarkCircle, faSquarePlus } from '@fortawesome/free-regular-svg-icons';
 import { Project } from 'src/app/Project';
 import { ProjectService } from 'src/app/services/project.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectAddComponent } from '../project-add/project-add.component';
 
 @Component({
   selector: 'app-project',
@@ -10,13 +11,12 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 export class ProjectComponent {
 
-  faSquareXmark = faXmarkCircle;
-  faSquarePlus = faSquarePlus;
-  displayAddForm : boolean = false;
   
   projects : Project[]
 
-  constructor ( private projectService : ProjectService ) {
+  private newProject = { id: 0, name : '', description : '', link : '' }
+
+  constructor ( public dialog : MatDialog, private projectService : ProjectService ) {
 
     this.projects = []
 
@@ -51,17 +51,33 @@ export class ProjectComponent {
     
   }
 
-  onDisplayAddForm(): void {
-    this.displayAddForm = !this.displayAddForm
-  }
 
   createProject(project : Project): void {
 
-    this.displayAddForm = !this.displayAddForm
     this.projectService.createProject(project).subscribe( response =>{
       this.projects.push(response)
    })
     
+  }
+
+  openDialog(){
+
+    const dialogRef = this.dialog.open ( ProjectAddComponent , {
+
+      width: '1000px',
+      data : this.newProject,
+      height : '525px',
+      disableClose : true,
+      enterAnimationDuration : 350,
+
+    } )
+
+    dialogRef.afterClosed().subscribe( response => { 
+      if (response){
+      this.projectService.createProject(response).subscribe( response => { this.projects.push(response) } )}
+     })
+
+
   }
 
 

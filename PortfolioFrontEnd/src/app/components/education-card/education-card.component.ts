@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Education } from '../../Education';
-import { EDUCATION } from '../../mock-education';
-import { faPenToSquare, faXmarkCircle, faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { EducationEditComponent } from '../education-edit/education-edit.component';
 
 
 @Component({
@@ -11,19 +11,15 @@ import { faPenToSquare, faXmarkCircle, faTrashCan } from '@fortawesome/free-regu
 })
 export class EducationCardComponent implements OnInit{
 
-  @Input() education : Education = EDUCATION[0]
+  @Input() education : Education = { id: 0, imgurl : '', institute : '' , title : '', time : '' }
 
   @Output() onDeleteEducation : EventEmitter <Education> = new EventEmitter
 
-  @Output() onEditEducation : EventEmitter <Education> = new EventEmitter
+  @Output() updatedEducation : EventEmitter <Education> = new EventEmitter
 
-  faPenToSquare = faPenToSquare ;
-  faXmarkCircle = faXmarkCircle;
-  faTrashCan = faTrashCan;
-  displayEditForm : boolean = false;
+  updatingEducation : Education 
 
-
-  constructor(  ){
+  constructor( public dialog : MatDialog ){
 
   }
 
@@ -35,11 +31,24 @@ export class EducationCardComponent implements OnInit{
     this.onDeleteEducation.emit(education);
   }
 
-  onEditedEducation(education : Education){
-    this.onEditEducation.emit(education)
-  }
+  openDialog(){
 
-  toggleDisplayEditForm(): void {
-    this.displayEditForm = !this.displayEditForm;    
+    this.updatingEducation = this.education
+    const dialogRef = this.dialog.open( EducationEditComponent, {
+
+      width: '1000px',
+      data : this.updatingEducation,
+      height : '600px',
+      disableClose : true,
+      enterAnimationDuration : 350,
+
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.updatedEducation.emit(result)
+      }
+      });
+
   }
 }

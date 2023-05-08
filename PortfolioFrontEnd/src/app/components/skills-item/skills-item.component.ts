@@ -37,7 +37,6 @@ export class SkillsItemComponent implements OnInit{
   openDialog(){
 
     this.updatingSkill = this.skill
-    console.log(this.skill , this.updatingSkill)
     const dialogRef = this.dialog.open(SkillsEditComponent,{
 
       width: '600px',

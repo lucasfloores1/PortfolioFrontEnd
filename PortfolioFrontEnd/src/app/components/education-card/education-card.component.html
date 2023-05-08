@@ -42,7 +42,7 @@
                 <mat-card-subtitle>{{education.time}}</mat-card-subtitle>
             </div>
             <div class="buttons">
-                <button mat-mini-fab color="primary"><mat-icon>edit</mat-icon></button>
+                <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
                 <button mat-mini-fab color="primary" (click)="onDelete(education)" ><mat-icon>delete</mat-icon></button>
             </div>
         </div>

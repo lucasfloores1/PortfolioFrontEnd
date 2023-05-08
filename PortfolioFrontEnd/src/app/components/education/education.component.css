@@ -1,24 +1,47 @@
-.add-button{
+.education{
+    justify-content: space-between;
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(3, auto);
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    padding: 5px;
+    padding-top: 15px;
+}
+
+.education-card-list{
+    width: 100%;
     display: flex;
-    height: 25px;
-    width: 25px;
+    flex-direction: column;
+    margin-top: 10px;
+    grid-column: 1/9;
+    grid-row: 3/4;
 }
 
-.add-button fa-icon{
-    width: 25px;
-    height: 25px;
-    color: #336;
-    cursor: pointer;
-    transition: color 0.2s ease-out;
-
+.education-list{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
-.add-button fa-icon:hover {
-    color: #000;
+#education-title{
+    width: 80%;
+    height: fit-content;
+    grid-column: 1/8;
+    grid-row: 1/2;
+}
+#education-title h2{
+    font-size: 22px;
 }
 
-.add-button fa-icon:active {
-    scale: 0.9;
-    color: #000;
+#education__add-button{
+    margin-right: 20px;
+    display: flex;
+    height: fit-content;
+    flex-direction: row-reverse;
+    grid-column: 8/9;
+    grid-row: 1/2;
 }
-
