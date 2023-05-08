@@ -1,7 +1,7 @@
 export interface Education {
     
-    id?: number;
-    img_url : string;
+    id: number;
+    imgurl : string;
     institute : string;
     title : string;
     time : string;

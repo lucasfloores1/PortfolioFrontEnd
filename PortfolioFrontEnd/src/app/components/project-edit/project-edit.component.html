@@ -1,0 +1,28 @@
+<form class="education-edit-form" (ngSubmit)="onSubmit()">
+
+    <div class="edit-form-container">
+        <div class="form-control-edit">
+            <input class="form__field-edit"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nombre del Projecto"
+                [(ngModel)]="name"
+            >
+            <label for="name" class="form__label">Institute</label>
+        </div>
+
+        <div class="form-control-edit">
+            <input class="form__field-edit"
+                type="text"
+                name="description"
+                id="description"
+                placeholder="Descripcion del proyecto"
+                [(ngModel)]="description"
+            >
+            <label for="description" class="form__label">Carrera</label>
+        </div>
+    </div>
+
+    <input type="submit" value="Confirmar" class="submit-button-edit">
+</form>

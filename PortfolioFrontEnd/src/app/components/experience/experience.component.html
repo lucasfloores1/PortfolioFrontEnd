@@ -1,0 +1,26 @@
+<div class="container" id="forth-section">
+    <div class="experience">
+        <div id="experience-title">
+            <h2>Experiencia</h2>
+        </div>
+        <div class="button" id="experience__add-button">
+            <div class="add-button">
+                <fa-icon (click) = "onDisplayAddForm()" [icon]="faSquareXmark" *ngIf="displayAddForm" size="2x"></fa-icon>
+                <fa-icon (click) = "onDisplayAddForm()" [icon]="faSquarePlus" *ngIf="!displayAddForm" size="2x"></fa-icon>
+            </div>    
+        </div>
+        <app-experience-add
+            *ngIf = "displayAddForm"
+            (onCreateExperience)="createExperience($event)"
+        ></app-experience-add>
+        <div class="experience-card-list" >
+            <app-experience-card 
+                *ngFor ="let experience of experiences"
+                [experience] = "experience"
+                (onEditExperience)="updateExperience($event)"
+                (onDeleteExperience)="deleteExperience(experience)"
+            >
+            </app-experience-card>
+        </div>
+    </div>
+</div>

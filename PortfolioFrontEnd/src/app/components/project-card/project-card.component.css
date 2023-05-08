@@ -1,24 +1,22 @@
-.add-button{
+.delete-button{
     display: flex;
     height: 25px;
     width: 25px;
 }
 
-.add-button fa-icon{
+.delete-button fa-icon{
     width: 25px;
     height: 25px;
     color: #336;
     cursor: pointer;
     transition: color 0.2s ease-out;
-
 }
 
-.add-button fa-icon:hover {
+.delete-button fa-icon:hover {
     color: #000;
 }
 
-.add-button fa-icon:active {
+.delete-button fa-icon:active {
     scale: 0.9;
     color: #000;
 }
-

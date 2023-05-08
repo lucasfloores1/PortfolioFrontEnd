@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Education } from 'src/app/Education';
-import { UiService } from 'src/app/services/ui.service';
-import { Subscription } from 'rxjs';
 import { Input, Output, EventEmitter } from '@angular/core';
 
 
@@ -13,7 +11,7 @@ import { Input, Output, EventEmitter } from '@angular/core';
 export class EducationEditComponent implements OnInit{
 
   @Input() educationimg : string = "";
-  @Input() educationid : number | undefined = 0 ;
+  @Input() educationid : number = 0 ;
 
   @Output() onEditedEducation : EventEmitter<Education> = new EventEmitter();
   
@@ -21,12 +19,8 @@ export class EducationEditComponent implements OnInit{
   title : string = "";
   time : string = "";
 
-  showEditEducation : boolean = false;
-  subscription?: Subscription;
   
-  constructor( private uiService : UiService ){
-
-    this.subscription = this.uiService.onToggleEdit().subscribe(value => this.showEditEducation = value)
+  constructor( ){
 
   }
 
@@ -41,7 +35,7 @@ export class EducationEditComponent implements OnInit{
 
     const editedEducation = {
       id: this.educationid,
-      img_url: this.educationimg,
+      imgurl: this.educationimg,
       institute : this.institute,
       title: this.title,
       time: this.time,

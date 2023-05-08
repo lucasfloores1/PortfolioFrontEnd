@@ -1,0 +1,25 @@
+<div class="container" id="fifth-section">
+    <div class="proyects">
+        <div id="proyects-title">
+            <h2>Proyectos</h2>
+        </div>
+        <div class="button" id="proyects__add-button">
+            <div class="add-button">
+                <fa-icon (click) = "onDisplayAddForm()" [icon]="faSquareXmark" *ngIf="displayAddForm" size="2x"></fa-icon>
+                <fa-icon (click) = "onDisplayAddForm()" [icon]="faSquarePlus" *ngIf="!displayAddForm" size="2x"></fa-icon>
+            </div> 
+        </div>
+        <app-project-add
+            *ngIf = "displayAddForm"
+            (onCreateProject)="createProject($event)"
+        ></app-project-add>
+        <div class="proyects-card-list">
+            <app-project-card
+                *ngFor ="let project of projects"
+                [project] = "project"
+                (onEditProject)="updateProject($event)"
+                (onDeleteProject)="deleteProject(project)"
+            ></app-project-card>
+        </div>
+    </div>
+</div>

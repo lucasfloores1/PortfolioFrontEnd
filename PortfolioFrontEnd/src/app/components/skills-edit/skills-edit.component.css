@@ -1,0 +1,31 @@
+.editForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    padding: 15px;
+    gap: 30px;
+}
+
+.form-container{
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    width: 100%;
+    gap: 8px;
+
+}
+
+.preview-spinner {
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    align-self: center;
+
+
+}
+
+.preview-spinner span {
+    margin-bottom: 20px;
+    max-width: 250px;
+}

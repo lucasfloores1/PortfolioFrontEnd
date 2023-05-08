@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Education } from '../../Education';
 import { EDUCATION } from '../../mock-education';
-import { UiService } from 'src/app/services/ui.service';
-import { Subscription } from 'rxjs'
+import { faPenToSquare, faXmarkCircle, faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 
 @Component({
@@ -18,12 +17,13 @@ export class EducationCardComponent implements OnInit{
 
   @Output() onEditEducation : EventEmitter <Education> = new EventEmitter
 
-  showEditEducation : boolean = false;
-  subscription?: Subscription;
+  faPenToSquare = faPenToSquare ;
+  faXmarkCircle = faXmarkCircle;
+  faTrashCan = faTrashCan;
+  displayEditForm : boolean = false;
 
-  constructor( private uiService : UiService ){
 
-    this.subscription = this.uiService.onToggleEdit().subscribe(value => this.showEditEducation = value)
+  constructor(  ){
 
   }
 
@@ -39,7 +39,7 @@ export class EducationCardComponent implements OnInit{
     this.onEditEducation.emit(education)
   }
 
-  toggleEditEducation(){
-    this.uiService.toggleEditEducation();
+  toggleDisplayEditForm(): void {
+    this.displayEditForm = !this.displayEditForm;    
   }
 }

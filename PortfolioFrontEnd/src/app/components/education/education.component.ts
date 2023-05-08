@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Education } from '../../Education';
-import { DataService } from 'src/app/services/data.service';
-import { Subscription } from 'rxjs';
-import { UiService } from 'src/app/services/ui.service';
+import { EducationService } from 'src/app/services/education.service';
+import { faXmarkCircle, faSquarePlus } from '@fortawesome/free-regular-svg-icons';
+import { MatDialog } from '@angular/material/dialog';
+import { AddEducationComponent } from '../add-education/add-education.component';
+
 
 
 @Component({
@@ -11,48 +13,72 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./education.component.css']
 })
 export class EducationComponent implements OnInit{
-  educations : Education[]
-  showAddEducation : boolean = false;
-  subscription : Subscription;
 
-  constructor(private dataService : DataService, private uiService : UiService){
-    this.educations = [];
-    
-    this.subscription = this.uiService.onToggleAdd().subscribe(value => this.showAddEducation = value)
+
+  
+  educations : Education[]
+
+  //preview de nuevo education
+  private newEducation : Education ={
+      id : 0,
+      imgurl : '',
+      institute : '',
+      title : '',
+      time : '',      
+  }
+
+  constructor(public dialog : MatDialog,private educationService : EducationService){
+
+    this.educations = [];  
+
   }
 
   ngOnInit() : void {
 
-    this.dataService
-    .getEducation()
+    this.educationService.loadEducation()
     .subscribe((educations) => this.educations = educations)
+
   }
 
   deleteEducation(education : Education) {
 
-    this.dataService.deleteEducation(education).subscribe(()=>(
+    this.educationService.deleteEducation(education).subscribe(()=>(
       this.educations = this.educations.filter( t => t.id !== education.id )
     )) 
 
   }
 
-  addEducation(education : Education){
-    this.dataService.addEducation(education).subscribe((education)=>(
-      this.educations.push(education)
-    ))
+
+  updateEducation(education : Education){
+
+    this.educationService.updateEducation(education).subscribe((response)=>( this.updateEducations(response) ));
+
   }
 
-  toggleAddEducation(){
-    this.uiService.toggleAddEducation();
+  updateEducations(updatedEducation: Education): void {
+    const index = this.educations.findIndex(education => education.id === updatedEducation.id);
+    if (index !== -1) {
+      this.educations[index] = updatedEducation;
+    }
   }
 
-  editEducation(education : Education){
-    console.log(education)
-    this.dataService.editEducation(education).subscribe((education)=>(
-      this.updateEducations(education)
-    ))
+
+  openDialog():void {
+
+    const dialogRef = this.dialog.open( AddEducationComponent,{
+
+      width: '1000px',
+      data : this.newEducation,
+      height : '650px',
+      disableClose : true,
+      enterAnimationDuration : 350,
+
+    })
+
+    dialogRef.afterClosed().subscribe( response => { 
+      if (response){
+      this.educationService.createEducation(response).subscribe( response => { this.educations.push(response) } )}
+     })
   }
-  updateEducations(education : Education) : void {
-    this.educations[education.id!-1] = education
-  }
+
 }

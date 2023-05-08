@@ -1,0 +1,49 @@
+<form class="education-add-form" (ngSubmit)="onSubmit()" >
+
+    <div class="form-control">
+        <input class="form__field"
+            type="text"
+            name="imgurl"
+            id="imgurl"
+            placeholder="Dirección de Imagen"
+            [(ngModel)]="imgurl"
+        >
+        <label for="time" class="form__label">Período</label>
+    </div>
+    
+    <div class="form-control">
+        <input class="form__field"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Nombre del puesto"
+            [(ngModel)]="name"
+        >
+        <label for="name" class="form__label">Institute</label>
+    </div>
+
+    <div class="form-control">
+        <input class="form__field"
+            type="text"
+            name="company"
+            id="company"
+            placeholder="Empresa"
+            [(ngModel)]="company"
+        >
+        <label for="company" class="form__label">Carrera</label>
+    </div>
+
+    <div class="form-control">
+        <input class="form__field"
+            type="text"
+            name="time"
+            id="time"
+            placeholder="Tiempo"
+            [(ngModel)]="time"
+        >
+        <label for="time" class="form__label">Período</label>
+    </div>
+
+    <input type="submit" value="Agregar Experiencia" class="submit-button">
+
+</form>

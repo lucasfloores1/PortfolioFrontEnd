@@ -1,0 +1,40 @@
+<form class="education-edit-form" (ngSubmit)="onSubmit()">
+
+    <div class="edit-form-container">
+        <div class="form-control-edit">
+            <input class="form__field-edit"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nombre del Puesto"
+                [(ngModel)]="name"
+            >
+            <label for="name" class="form__label">Institute</label>
+        </div>
+
+        <div class="form-control-edit">
+            <input class="form__field-edit"
+                type="text"
+                name="company"
+                id="company"
+                placeholder="Empresa"
+                [(ngModel)]="company"
+            >
+            <label for="company" class="form__label">Carrera</label>
+        </div>
+
+        <div class="form-control-edit">
+            <input class="form__field-edit"
+                type="text"
+                name="time"
+                id="time"
+                placeholder="Tiempo"
+                [(ngModel)]="time"
+            >
+            <label for="time" class="form__label">Período</label>
+        </div>
+    </div>
+
+    <input type="submit" value="Confirmar" class="submit-button-edit">
+
+</form>

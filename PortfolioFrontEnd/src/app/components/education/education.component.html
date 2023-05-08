@@ -1,46 +1,42 @@
-<div class="container" id="third-section">
+<!-- <div class="container" id="third-section">
     <div class="education">
         <div id="education-title">
             <h2>Educación</h2>
         </div>
         <div class="button" id="education__add-button">
-        <app-add-btn
-            (click)="toggleAddEducation()"
-        >
-
-        </app-add-btn>
+            <div class="add-button">
+                <fa-icon (click) = "onDisplayAddForm()" [icon]="faSquareXmark" *ngIf="displayAddForm" size="2x"></fa-icon>
+                <fa-icon (click) = "onDisplayAddForm()" [icon]="faSquarePlus" *ngIf="!displayAddForm" size="2x"></fa-icon>
+            </div>    
         </div>
-        <app-add-education
-            (onAddEducation)="addEducation($event)"
-        >
-        </app-add-education>
+        <app-add-education *ngIf="displayAddForm"  (onAddEducation)="addEducation($event)"> </app-add-education>
         <div class="education-card-list">
             <app-education-card
                 *ngFor = "let education of educations"
                 [education] = "education"
                 (onDeleteEducation) = "deleteEducation(education)"
-                (onEditEducation) = "editEducation($event)"
+                (onEditEducation) = "updateEducation($event)"
             ></app-education-card>
         </div>
-        <!-- <div id="education-card">
-            <div class="education__img">
-                <img class="education-card__img" src="UTN_logo.jpg">
-            </div>
-            <div class="education-card__text">
-                <div class="education-card__institute">
-                    <p>Universidad Tecnológica Nacional</p>
-                </div>
-                <div class="education-card__title">
-                    <p>Ingenieria en Sistemas (Incompleto)</p>
-                </div>
-                <div class="education-card__time">
-                    <p>2019-2021</p>
-                </div>
-            </div>
-            <div class="education-card__buttons">
-                <button class="education-card__del-button">del</button>
-                <button class="education-card__edit-button">edit</button>
-            </div>
-        </div> -->
+    </div>
+</div> -->
+<div class="container" id="third-section">
+    <div class="education">
+        <div id="education-title">
+            <h2 mat-card-title>Educación</h2>
+        </div>
+        <div class="button" id="education__add-button">
+            <div class="add-button">
+                <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
+            </div>    
+        </div>
+        <div class="education-card-list">
+            <app-education-card
+                *ngFor = "let education of educations"
+                [education] = "education"
+                (onDeleteEducation) = "deleteEducation(education)"
+                (onEditEducation) = "updateEducation($event)"
+            ></app-education-card>
+        </div>
     </div>
 </div>

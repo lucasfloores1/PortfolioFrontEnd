@@ -1,0 +1,24 @@
+<div id="proyects-card">
+    <div class="proyects-card__text">
+        <div class="proyects-card__institute">
+            <p>{{project.name}}</p>
+        </div>
+        <div class="proyects-card__title">
+            <p>{{project.description}}</p>
+        </div>
+    </div>
+    <app-project-edit
+        *ngIf="displayEditForm"
+        (onEditedProject)="onEditedProject($event)"
+        [projectid]="project.id"
+    ></app-project-edit>
+    <div class="proyects-card__buttons">
+        <div class="delete-button">
+            <fa-icon (click)="onDelete(project)" [icon]="faTrashCan" size="2x"></fa-icon>
+        </div>
+        <div class="edit-button">
+            <fa-icon *ngIf="!displayEditForm" (click) = "toggleDisplayEditForm()" [icon]="faPenToSquare" size ="2x"></fa-icon>
+            <fa-icon *ngIf="displayEditForm" (click) = "toggleDisplayEditForm()" [icon]="faXmarkCircle" size ="2x"></fa-icon>
+        </div>
+    </div>
+</div>

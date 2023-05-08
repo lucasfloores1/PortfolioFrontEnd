@@ -1,6 +1,6 @@
 export interface Project {
     
-    id? : number,  //todavia nose usarlo
+    id : number,
     name : string;
     description : string;
 

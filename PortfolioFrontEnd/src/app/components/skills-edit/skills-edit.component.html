@@ -1,0 +1,32 @@
+<h2 mat-dialog-title align="center"> Editar Habilidad </h2>
+
+    <div class="editForm" >
+        <div class="form-container">
+            <mat-form-field appearance="fill" class="skils-input">
+                <mat-label>{{data.name}}</mat-label>
+                <input matInput [(ngModel)]="nameSkill">
+            </mat-form-field>
+            <mat-form-field class="skils-select">
+                <mat-label>Color</mat-label>
+                <mat-select [(ngModel)]="colorSkill">
+                    <mat-option *ngFor="let color of colors" [value]="color.value">
+                        {{color.viewValue}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-slider class="skills-range">
+                <input type="range" [(ngModel)]="valueSkill" matSliderThumb>
+            </mat-slider>
+            <button type="submit" mat-raised-button color="primary" (click)="closeDialog()" >Confirmar</button>
+            <button mat-raised-button color="warn" (click)="onNoClick()" >Cancelar</button>
+        </div>
+        <div class="preview-spinner">
+            <span mat-card-title align="center"> {{nameSkill}}  </span>
+            <mat-progress-spinner diameter="250" class="skills-spinner"
+                [color]="colorSkill"
+                [mode]="modeSpinner"
+                [value]="valueSkill">
+            </mat-progress-spinner>
+        </div>
+    </div>
+

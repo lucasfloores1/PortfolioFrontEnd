@@ -1,0 +1,19 @@
+<mat-card class="skills-card">
+    <mat-card-content>
+        <div class="title-buttons">
+            <h2 mat-card-title align="center" class="skills-title">{{skill.name}}</h2>
+            <div class="buttons">
+                <button mat-mini-fab class="edit-btn" color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
+                <button mat-mini-fab class="del-btn" color="primary" (click)="onDelete()"> <mat-icon>delete</mat-icon> </button>
+            </div>
+        </div>
+        <mat-progress-spinner 
+            class="spinner"
+            [color]="skill.color" 
+            mode="determinate" 
+            [value] = "skill.value" 
+            diameter="175"
+        >
+        </mat-progress-spinner>
+    </mat-card-content>
+</mat-card>

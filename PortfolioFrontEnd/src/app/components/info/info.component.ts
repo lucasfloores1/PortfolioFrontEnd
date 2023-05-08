@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Info } from '../../Info';
 import { InfoService } from 'src/app/services/info.service';
-import { INFO } from 'src/app/mock-info';
+import { faPenToSquare, faXmarkCircle} from '@fortawesome/free-regular-svg-icons';
+import { info } from 'ngx-bootstrap-icons';
 
 @Component({
   selector: 'app-info',
@@ -10,17 +11,24 @@ import { INFO } from 'src/app/mock-info';
 })
 export class InfoComponent implements OnInit {
   
-  information : Info[]
+  information : Info[] = []
 
-  constructor(private infoService : InfoService){ 
-    this.information = []
+  faPenToSquare = faPenToSquare ;
+  faXmarkCircle = faXmarkCircle;
+  displayEditForm : boolean = false;
+
+  constructor(private infoService : InfoService , private cdr: ChangeDetectorRef){ 
+    
   }
 
   ngOnInit () : void{
+    this.infoService.getInfo().subscribe((response) => {
+      this.information = response;
+      this.cdr.detectChanges();
+    })
+  }
 
-    this.infoService
-    .getInfo()
-    .subscribe((information) => this.information = information )
-
+  toggleDisplayEditForm(): void {
+    this.displayEditForm = !this.displayEditForm;    
   }
 }

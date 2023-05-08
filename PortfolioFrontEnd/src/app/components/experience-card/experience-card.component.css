@@ -4,7 +4,7 @@
     width: 25px;
 }
 
-.delete-button svg{
+.delete-button fa-icon{
     width: 25px;
     height: 25px;
     color: #336;
@@ -12,11 +12,11 @@
     transition: color 0.2s ease-out;
 }
 
-.delete-button svg:hover {
+.delete-button fa-icon:hover {
     color: #000;
 }
 
-.delete-button svg:active {
+.delete-button fa-icon:active {
     scale: 0.9;
     color: #000;
 }
