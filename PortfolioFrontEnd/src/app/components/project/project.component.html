@@ -30,7 +30,7 @@
             <h2 mat-card-title class="title">Proyectos</h2>
         </div>
         <div class="button" id="proyects__add-button">
-            <div class="add-button">
+            <div class="add-button" *ngIf="showEdit">
                 <button mat-mini-fab color="primary" (click)="openDialog()" > <mat-icon>add</mat-icon> </button>
             </div> 
         </div>

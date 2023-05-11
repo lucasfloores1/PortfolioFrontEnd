@@ -2,6 +2,7 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Project } from 'src/app/Project';
 import { MatDialog } from '@angular/material/dialog';
 import { ProjectEditComponent } from '../project-edit/project-edit.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 @Component({
   selector: 'app-project-card',
@@ -10,6 +11,8 @@ import { ProjectEditComponent } from '../project-edit/project-edit.component';
 })
 export class ProjectCardComponent {
 
+  showEdit : boolean = false
+  
   @Output() updatedProject : EventEmitter<Project> = new EventEmitter
 
   @Output() onDeleteProject : EventEmitter<Project> = new EventEmitter
@@ -23,11 +26,15 @@ export class ProjectCardComponent {
 
   private updatingProject : Project;
 
-  constructor( public dialog : MatDialog ){
+  constructor( public authService : AuthorizationService ,public dialog : MatDialog ){
 
   }
 
   ngOnInit(): void {
+
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
     
   }
 

@@ -2,7 +2,7 @@
     <mat-card-content>
         <div class="title-buttons">
             <h2 mat-card-title align="center" class="skills-title">{{skill.name}}</h2>
-            <div class="buttons">
+            <div class="buttons" *ngIf="showEdit">
                 <button mat-mini-fab class="edit-btn" color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
                 <button mat-mini-fab class="del-btn" color="primary" (click)="onDelete()"> <mat-icon>delete</mat-icon> </button>
             </div>

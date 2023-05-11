@@ -13,11 +13,14 @@
 
 .title-buttons {
     display: flex;
+    flex-direction: column;
     flex-wrap: nowrap;
-    align-self: center;
-
+    align-items: center;
+    align-content: center;
 }
-
+.buttons {
+    margin-bottom: 15px;
+}
 .edit-btn {
     margin-right: 5px;
     margin-left: 5px;

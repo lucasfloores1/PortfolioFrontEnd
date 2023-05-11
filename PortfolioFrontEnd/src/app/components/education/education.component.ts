@@ -3,6 +3,7 @@ import { Education } from '../../Education';
 import { EducationService } from 'src/app/services/education.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEducationComponent } from '../add-education/add-education.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 
 
@@ -13,7 +14,7 @@ import { AddEducationComponent } from '../add-education/add-education.component'
 })
 export class EducationComponent implements OnInit{
 
-
+  showEdit : boolean = false
   
   educations : Education[]
 
@@ -26,7 +27,7 @@ export class EducationComponent implements OnInit{
       time : '',      
   }
 
-  constructor(public dialog : MatDialog,private educationService : EducationService){
+  constructor(public authService : AuthorizationService, public dialog : MatDialog,private educationService : EducationService){
 
     this.educations = [];  
 
@@ -34,6 +35,10 @@ export class EducationComponent implements OnInit{
 
   ngOnInit() : void {
 
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
+    
     this.educationService.loadEducation()
     .subscribe((educations) => this.educations = educations)
 

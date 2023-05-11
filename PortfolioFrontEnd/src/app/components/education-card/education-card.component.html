@@ -1,35 +1,3 @@
-<!-- <div id="education-card">
-    <div class="education__img">
-        <img class="education-card__img" [src]="education.imgurl">
-    </div>
-    <div class="education-card__text">
-        <div class="education-card__institute">
-            <p>{{education.institute}}</p>
-        </div>
-        <div class="education-card__title">
-           <p>{{education.title}}</p>
-        </div>
-        <div class="education-card__time">
-                    <p>{{education.time}}</p>
-        </div>
-    </div>
-    <app-education-edit
-        *ngIf="displayEditForm"
-        [educationimg]="education.imgurl"
-        [educationid]="education.id"
-        (onEditedEducation)="onEditedEducation($event)"
-    ></app-education-edit>
-    <div class="education-card__buttons">
-        <div class="edit-button">
-            <fa-icon *ngIf="!displayEditForm" (click) = "toggleDisplayEditForm()" [icon]="faPenToSquare" size ="2x"></fa-icon>
-            <fa-icon *ngIf="displayEditForm" (click) = "toggleDisplayEditForm()" [icon]="faXmarkCircle" size ="2x"></fa-icon>
-        </div>
-        <div class="delete-button">
-            <fa-icon (click) = "onDelete(education)" [icon]="faTrashCan" size="2x"></fa-icon>
-        </div>
-    </div>
-</div> -->
-
 <mat-card class="education-card">
     <mat-card-content>
         <div class="card">
@@ -41,7 +9,7 @@
                 <mat-card-title>{{education.title}}</mat-card-title>
                 <mat-card-subtitle>{{education.time}}</mat-card-subtitle>
             </div>
-            <div class="buttons">
+            <div class="buttons" *ngIf="showEdit">
                 <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
                 <button mat-mini-fab color="primary" (click)="onDelete(education)" ><mat-icon>delete</mat-icon></button>
             </div>

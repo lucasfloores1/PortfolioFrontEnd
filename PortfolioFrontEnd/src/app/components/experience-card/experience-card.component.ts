@@ -2,6 +2,7 @@ import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Experience } from 'src/app/Experience';
 import { MatDialog } from '@angular/material/dialog';
 import { ExperienceEditComponent } from '../experience-edit/experience-edit.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 @Component({
   selector: 'app-experience-card',
@@ -10,6 +11,8 @@ import { ExperienceEditComponent } from '../experience-edit/experience-edit.comp
 })
 export class ExperienceCardComponent  implements OnInit{
  
+  showEdit : boolean = false
+
   @Output() updatedExperience : EventEmitter<Experience> = new EventEmitter
 
   @Output() onDeleteExperience : EventEmitter<Experience> = new EventEmitter
@@ -18,11 +21,15 @@ export class ExperienceCardComponent  implements OnInit{
 
   updatingExperience : Experience
 
-  constructor( public dialog : MatDialog ){
+  constructor( public authService : AuthorizationService ,public dialog : MatDialog ){
 
   }
 
   ngOnInit(): void {
+
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
     
   }
 

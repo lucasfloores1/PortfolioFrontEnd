@@ -2,7 +2,6 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Info } from '../../Info';
 import { InfoService } from 'src/app/services/info.service';
 import { MatDialog } from '@angular/material/dialog';
-import { InfoEditComponent } from '../info-edit/info-edit.component';
 
 @Component({
   selector: 'app-info',

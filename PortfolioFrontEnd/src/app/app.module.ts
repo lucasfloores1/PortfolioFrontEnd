@@ -22,7 +22,6 @@ import { ProjectCardComponent } from './components/project-card/project-card.com
 import { ProjectEditComponent } from './components/project-edit/project-edit.component';
 import { AboutComponent } from './components/about/about.component';
 import { AboutEditComponent } from './components/about-edit/about-edit.component';
-import { InfoEditComponent } from './components/info-edit/info-edit.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { SkillsAddComponent } from './components/skills-add/skills-add.component';
 import { SkillsEditComponent } from './components/skills-edit/skills-edit.component';
@@ -41,6 +40,9 @@ import {DialogModule} from '@angular/cdk/dialog';
 import { MatDialogModule, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { LoginComponent } from './components/login/login.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -62,11 +64,11 @@ import {MatDividerModule} from '@angular/material/divider';
     ProjectEditComponent,
     AboutComponent,
     AboutEditComponent,
-    InfoEditComponent,
     SkillsComponent,
     SkillsAddComponent,
     SkillsEditComponent,
     SkillsItemComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +88,9 @@ import {MatDividerModule} from '@angular/material/divider';
     LayoutModule,
     DialogModule,
     MatDialogModule,
-    MatDividerModule
+    MatDividerModule,
+    MatToolbarModule,
+    MatSnackBarModule
 
   ],
   providers: [

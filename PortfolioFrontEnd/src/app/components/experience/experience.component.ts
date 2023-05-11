@@ -3,6 +3,7 @@ import { Experience } from 'src/app/Experience';
 import { ExperienceService } from 'src/app/services/experience.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ExperienceAddComponent } from '../experience-add/experience-add.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 @Component({
   selector: 'app-experience',
@@ -11,16 +12,22 @@ import { ExperienceAddComponent } from '../experience-add/experience-add.compone
 })
 export class ExperienceComponent implements OnInit {
 
+  showEdit : boolean = false
+
   experiences : Experience[]
 
   private newExperience : Experience = { id: 0, imgurl : '' , company : '', name : '', time : '' }
 
-  constructor ( public dialog : MatDialog , private experienceService : ExperienceService ) {
+  constructor ( public authService : AuthorizationService ,public dialog : MatDialog , private experienceService : ExperienceService ) {
 
     this.experiences = []
 
   }
   ngOnInit(): void {
+
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
 
     this.experienceService.loadExperience().subscribe( response => this.experiences = response )
 

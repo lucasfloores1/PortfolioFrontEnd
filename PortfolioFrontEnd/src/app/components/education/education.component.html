@@ -1,32 +1,10 @@
-<!-- <div class="container" id="third-section">
-    <div class="education">
-        <div id="education-title">
-            <h2>Educación</h2>
-        </div>
-        <div class="button" id="education__add-button">
-            <div class="add-button">
-                <fa-icon (click) = "onDisplayAddForm()" [icon]="faSquareXmark" *ngIf="displayAddForm" size="2x"></fa-icon>
-                <fa-icon (click) = "onDisplayAddForm()" [icon]="faSquarePlus" *ngIf="!displayAddForm" size="2x"></fa-icon>
-            </div>    
-        </div>
-        <app-add-education *ngIf="displayAddForm"  (onAddEducation)="addEducation($event)"> </app-add-education>
-        <div class="education-card-list">
-            <app-education-card
-                *ngFor = "let education of educations"
-                [education] = "education"
-                (onDeleteEducation) = "deleteEducation(education)"
-                (onEditEducation) = "updateEducation($event)"
-            ></app-education-card>
-        </div>
-    </div>
-</div> -->
 <div class="container" id="third-section">
     <div class="education">
         <div id="education-title">
             <h2 mat-card-title>Educación</h2>
         </div>
         <div class="button" id="education__add-button">
-            <div class="add-button">
+            <div class="add-button" *ngIf="showEdit">
                 <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>add</mat-icon></button>
             </div>    
         </div>

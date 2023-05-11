@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AboutEditComponent } from '../about-edit/about-edit.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 
 @Component({
@@ -10,13 +11,19 @@ import { AboutEditComponent } from '../about-edit/about-edit.component';
 })
 export class AboutComponent  implements OnInit{
 
+  showEdit : boolean = false
+
   aboutText : string = 'Desarrolador web full stack jr. dando sus primeros pasos y buscando su primer trabajo en IT';
 
-  constructor( public dialog : MatDialog ){
+  constructor( public authService : AuthorizationService ,public dialog : MatDialog ){
 
   }
 
   ngOnInit(  ): void {
+
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
     
   }
 

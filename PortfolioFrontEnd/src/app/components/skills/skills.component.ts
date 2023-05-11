@@ -3,6 +3,7 @@ import { Skills } from 'src/app/Skills';
 import { MatDialog } from '@angular/material/dialog';
 import { SkillsAddComponent } from 'src/app/components/skills-add/skills-add.component';
 import { SkillsService } from 'src/app/services/skills.service';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 @Component({
   selector: 'app-skills',
@@ -11,6 +12,8 @@ import { SkillsService } from 'src/app/services/skills.service';
 })
 export class SkillsComponent implements OnInit {
 
+  showEdit : boolean = false;
+  
   skills : Skills[]
 
   //pewview of a new skill to add
@@ -21,13 +24,17 @@ export class SkillsComponent implements OnInit {
     value : 85,
   };
 
-  constructor( public dialog: MatDialog, private skillsService : SkillsService ){
+  constructor( public authService : AuthorizationService ,public dialog: MatDialog, private skillsService : SkillsService ){
 
     this.skills=[]
 
   }
   
   ngOnInit(): void {
+
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
 
     this.skillsService.loadSkills().subscribe( response => { this.skills = response } )
     

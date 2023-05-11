@@ -3,6 +3,7 @@ import { Skills } from 'src/app/Skills';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatDialog } from '@angular/material/dialog';
 import { SkillsEditComponent } from '../skills-edit/skills-edit.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 
 
@@ -13,6 +14,8 @@ import { SkillsEditComponent } from '../skills-edit/skills-edit.component';
 })
 export class SkillsItemComponent implements OnInit{
 
+  showEdit : boolean = false
+  
   @Input() skill : Skills = {
     id: 0,
     name : '',
@@ -26,11 +29,15 @@ export class SkillsItemComponent implements OnInit{
   
   updatingSkill : Skills 
 
-  constructor( public dialog: MatDialog ){
+  constructor( public authService : AuthorizationService ,public dialog: MatDialog ){
 
   }
 
   ngOnInit(): void {
+
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
     
   }
 

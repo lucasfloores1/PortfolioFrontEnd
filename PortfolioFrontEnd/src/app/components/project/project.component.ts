@@ -3,6 +3,7 @@ import { Project } from 'src/app/Project';
 import { ProjectService } from 'src/app/services/project.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProjectAddComponent } from '../project-add/project-add.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 @Component({
   selector: 'app-project',
@@ -11,17 +12,22 @@ import { ProjectAddComponent } from '../project-add/project-add.component';
 })
 export class ProjectComponent {
 
+  showEdit : boolean = false
   
   projects : Project[]
 
   private newProject = { id: 0, name : '', description : '', link : '' }
 
-  constructor ( public dialog : MatDialog, private projectService : ProjectService ) {
+  constructor ( public authService : AuthorizationService ,public dialog : MatDialog, private projectService : ProjectService ) {
 
     this.projects = []
 
   }
   ngOnInit(): void {
+
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
 
     this.projectService.loadProject().subscribe( response => this.projects = response )
 

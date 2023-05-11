@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Education } from '../../Education';
 import { MatDialog } from '@angular/material/dialog';
 import { EducationEditComponent } from '../education-edit/education-edit.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 
 @Component({
@@ -11,6 +12,8 @@ import { EducationEditComponent } from '../education-edit/education-edit.compone
 })
 export class EducationCardComponent implements OnInit{
 
+  showEdit : boolean = false
+
   @Input() education : Education = { id: 0, imgurl : '', institute : '' , title : '', time : '' }
 
   @Output() onDeleteEducation : EventEmitter <Education> = new EventEmitter
@@ -19,11 +22,16 @@ export class EducationCardComponent implements OnInit{
 
   updatingEducation : Education 
 
-  constructor( public dialog : MatDialog ){
+  constructor( public authService : AuthorizationService ,public dialog : MatDialog ){
 
   }
 
   ngOnInit() : void {
+
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
+
   }
 
   onDelete(education : Education) {
