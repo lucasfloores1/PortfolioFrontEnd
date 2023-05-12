@@ -1,0 +1,13 @@
+<div class="container" id="second-section">
+    <div class="about">
+        <div id="about-title">
+            <h2>Acerca de...</h2>
+        </div>
+        <div class="edit-button" *ngIf="showEdit">
+            <button mat-mini-fab color="primary" (click)="openDialog()"> <mat-icon>edit</mat-icon> </button>
+        </div>
+        <div id="about-text">
+            <p>{{aboutText}}</p>
+        </div>
+    </div>
+</div>

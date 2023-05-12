@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="content-section">
+        <div class="title-add">
+            <mat-card-title > Hard and Soft Skills </mat-card-title>
+            <button mat-mini-fab color="primary" (click)="openDialog()"class="add-button"*ngIf="showEdit"><mat-icon>add</mat-icon></button>
+        </div>
+        <div class="skills-card-list">
+            <app-skills-item
+                *ngFor="let skill of skills"
+                [skill] = "skill"
+                (updatedSkill)="updateSkill($event)"
+                (deleteSkill)="deleteSkill($event)"
+            ></app-skills-item>
+        </div>
+    </div>
+</div>

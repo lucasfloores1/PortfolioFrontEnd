@@ -1,0 +1,18 @@
+<mat-card class="experience-card">
+    <mat-card-content>
+        <div class="card">
+            <div class="img">
+                <img mat-card-image [src]="experience.imgurl">
+            </div>
+            <div class="text">
+                <mat-card-title>{{experience.company}}</mat-card-title>
+                <mat-card-title>{{experience.name}}</mat-card-title>
+                <mat-card-subtitle>{{experience.time}}</mat-card-subtitle>
+            </div>
+            <div class="buttons" *ngIf="showEdit">
+                <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
+                <button mat-mini-fab color="primary" (click)="onDelete(experience)" ><mat-icon>delete</mat-icon></button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

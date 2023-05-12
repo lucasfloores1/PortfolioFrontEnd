@@ -1,7 +1,7 @@
 export interface Experience {
 
-    id? : number,
-    img_url : string;
+    id : number,
+    imgurl : string;
     name : string;
     company : string;
     time : string;

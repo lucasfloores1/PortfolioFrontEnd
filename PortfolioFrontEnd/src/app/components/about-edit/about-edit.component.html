@@ -1,0 +1,18 @@
+<mat-card>
+    <div class="about-edit">
+        <mat-card-content>
+            <h2 mat-card-title >Editar Acerca de...</h2>
+            <mat-divider></mat-divider>
+            <div class="about-input">
+                <mat-form-field appearance="fill" class="about-input">
+                    <mat-label>Texto</mat-label>
+                    <textarea matInput [(ngModel)]="data"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="about-btn">
+                <button class="del-btn" mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+                <button class="ok-btn" mat-raised-button color="primary" [mat-dialog-close]="data">Confirmar</button>
+            </div>
+        </mat-card-content>
+    </div>
+</mat-card>

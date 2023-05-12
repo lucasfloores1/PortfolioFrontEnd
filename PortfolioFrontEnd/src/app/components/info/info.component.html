@@ -1,4 +1,16 @@
-<app-info-edit
-    *ngFor = "let info of information"
-    [info] = "info"
-></app-info-edit>
+<div class="container" id="first-section" *ngIf="information">
+    <div class="profile-background">
+        <img *ngIf="information[0].bannerurl" src="{{information[0].bannerurl}}">
+    </div>
+    <div id="ordenador">
+        <div class="profile-picture" *ngIf="information">
+            <img [src]="information[0].pfpurl">
+        </div>
+    </div>
+    <div class="info-data" *ngIf="information">
+        <div class="info-data__container">
+            <h1 id="info-name">{{information[0].name}}</h1>
+            <div id="info-description">{{information[0].description}}</div>
+        </div>
+    </div>
+</div>

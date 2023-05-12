@@ -1,1 +1,7 @@
-<p>nav works!</p>
+<mat-toolbar color="primary">
+    <span class="navbar-spacer"></span>
+    <span class="title" *ngIf="!showEdit">Login</span>
+    <button mat-icon-button class="login" (click)="goToLogin()" *ngIf="!showEdit"><mat-icon>login</mat-icon></button>
+    <span class="title" *ngIf="showEdit">Logout</span>
+    <button mat-icon-button class="login" (click)="logOut()" *ngIf="showEdit"><mat-icon>logout</mat-icon></button>
+</mat-toolbar>

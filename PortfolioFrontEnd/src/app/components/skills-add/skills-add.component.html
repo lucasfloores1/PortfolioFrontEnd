@@ -1,0 +1,30 @@
+<h2 mat-dialog-title align="center"> Agregar Nueva Habilidad </h2>
+<div class="addForm" >
+    <div class="form-container">
+        <mat-form-field appearance="fill" class="skils-input">
+            <mat-label>Habilidad</mat-label>
+            <input matInput [(ngModel)]="data.name">
+        </mat-form-field>
+        <mat-form-field class="skils-select">
+            <mat-label>Color</mat-label>
+            <mat-select [(ngModel)]="data.color">
+                <mat-option *ngFor="let color of colors" [value]="color.value">
+                    {{color.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-slider class="skills-range">
+           <input type="range" [(ngModel)]="data.value" matSliderThumb>
+        </mat-slider>
+       <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="data" >Agregar</button>
+       <button mat-raised-button color="warn" (click)="onNoClick()" >Cancelar</button>
+    </div>
+    <div class="preview-spinner">
+        <span mat-card-title align="center"> {{data.name}}  </span>
+        <mat-progress-spinner diameter="250" class="skills-spinner"
+            [color]="data.color"
+            [mode]="modeSpinner"
+            [value]="data.value">
+        </mat-progress-spinner>
+    </div>
+</div>

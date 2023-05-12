@@ -1,0 +1,16 @@
+<mat-card class="project-card">
+    <mat-card-content>
+        <div class="card">
+            <div class="text">
+                <div class="title">
+                    <mat-card-title>{{project.name}}</mat-card-title><button mat-mini-fab color="primary" (click)="redirectToProject(project)"><mat-icon>link</mat-icon></button>
+                </div>
+                <mat-card-subtitle>{{project.description}}</mat-card-subtitle>
+            </div>
+            <div class="buttons" *ngIf="showEdit">
+                <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
+                <button mat-mini-fab color="primary" (click)="onDelete(project)" ><mat-icon>delete</mat-icon></button>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,23 @@
+.about-input {
+    width: 100%;  
+}
+
+.about.edit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.about-button {
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+}
+
+.del-btn {
+    margin-right: 10px;
+}
+
+.ok-btn {
+    margin-left: 10px;
+}

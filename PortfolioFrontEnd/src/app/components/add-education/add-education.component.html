@@ -1,49 +1,41 @@
-<form class="education-add-form" (ngSubmit)="onSubmit()" *ngIf="showAddEducation">
-
-    <div class="form-control">
-        <input class="form__field"
-            type="text"
-            name="img_url"
-            id="img_url"
-            placeholder="Dirección de Imagen"
-            [(ngModel)]="img_url"
-        >
-        <label for="time" class="form__label">Período</label>
+<h2 mat-dialog-title align="center">Agregar Nueva Educacion</h2>
+<mat-divider></mat-divider>
+<div class="addForm">
+    <div class="form-container">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Imagen</mat-label>
+            <input placeholder="Copie aquí la dirección URL de la imagen" matInput [(ngModel)]="data.imgurl">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Instituto</mat-label>
+            <input matInput placeholder="Ej: Universidad de Buenos Aires" [(ngModel)]="data.institute">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Título</mat-label>
+            <input matInput placeholder="Ej: Ingenieria en Sistemas de Información" [(ngModel)]="data.title">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Período de tiempo</mat-label>
+            <input matInput placeholder="Ej: 2018-Actualidad" [(ngModel)]="data.time">
+        </mat-form-field>
     </div>
-    
-    <div class="form-control">
-        <input class="form__field"
-            type="text"
-            name="institute"
-            id="institute"
-            placeholder="Instituto"
-            [(ngModel)]="institute"
-        >
-        <label for="institute" class="form__label">Institute</label>
-    </div>
-
-    <div class="form-control">
-        <input class="form__field"
-            type="text"
-            name="title"
-            id="title"
-            placeholder="Carrerra"
-            [(ngModel)]="title"
-        >
-        <label for="title" class="form__label">Carrera</label>
-    </div>
-
-    <div class="form-control">
-        <input class="form__field"
-            type="text"
-            name="time"
-            id="time"
-            placeholder="Tiempo"
-            [(ngModel)]="time"
-        >
-        <label for="time" class="form__label">Período</label>
-    </div>
-
-    <input type="submit" value="Agregar Educación" class="submit-button">
-
-</form>
+    <mat-divider></mat-divider>
+    <mat-card>
+        <mat-card-content>
+            <div class="card-preview">
+                <div class="img">
+                    <img *ngIf="data.imgurl" [src]="data.imgurl" alt="Imagen">
+                </div>
+                <div class="text">
+                    <p mat-card-title>{{data.institute}}</p>
+                    <p mat-card-title>{{data.title}}</p>
+                    <p mat-card-subtitle>{{data.time}}</p>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="buttons">
+    <button class="add"mat-raised-button color="primary" [mat-dialog-close]="data">Añadir</button>
+    <button class="cancel" mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+</div>      

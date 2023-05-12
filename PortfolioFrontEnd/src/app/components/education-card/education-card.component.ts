@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Education } from '../../Education';
-import { EDUCATION } from '../../mock-education';
-import { UiService } from 'src/app/services/ui.service';
-import { Subscription } from 'rxjs'
+import { MatDialog } from '@angular/material/dialog';
+import { EducationEditComponent } from '../education-edit/education-edit.component';
+import { AuthorizationService } from 'src/app/services/authorization.service';
 
 
 @Component({
@@ -12,22 +12,26 @@ import { Subscription } from 'rxjs'
 })
 export class EducationCardComponent implements OnInit{
 
-  @Input() education : Education = EDUCATION[0]
+  showEdit : boolean = false
+
+  @Input() education : Education = { id: 0, imgurl : '', institute : '' , title : '', time : '' }
 
   @Output() onDeleteEducation : EventEmitter <Education> = new EventEmitter
 
-  @Output() onEditEducation : EventEmitter <Education> = new EventEmitter
+  @Output() updatedEducation : EventEmitter <Education> = new EventEmitter
 
-  showEditEducation : boolean = false;
-  subscription?: Subscription;
+  updatingEducation : Education 
 
-  constructor( private uiService : UiService ){
-
-    this.subscription = this.uiService.onToggleEdit().subscribe(value => this.showEditEducation = value)
+  constructor( public authService : AuthorizationService ,public dialog : MatDialog ){
 
   }
 
   ngOnInit() : void {
+
+    this.authService.getIsLoggedInSubject().subscribe( response => {
+      this.showEdit = response
+    } )
+
   }
 
   onDelete(education : Education) {
@@ -35,11 +39,24 @@ export class EducationCardComponent implements OnInit{
     this.onDeleteEducation.emit(education);
   }
 
-  onEditedEducation(education : Education){
-    this.onEditEducation.emit(education)
-  }
+  openDialog(){
 
-  toggleEditEducation(){
-    this.uiService.toggleEditEducation();
+    this.updatingEducation = this.education
+    const dialogRef = this.dialog.open( EducationEditComponent, {
+
+      width: '1000px',
+      data : this.updatingEducation,
+      height : '600px',
+      disableClose : true,
+      enterAnimationDuration : 350,
+
+    })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result){
+        this.updatedEducation.emit(result)
+      }
+      });
+
   }
 }

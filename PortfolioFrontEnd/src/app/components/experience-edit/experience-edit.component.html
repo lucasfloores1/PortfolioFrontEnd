@@ -1,0 +1,37 @@
+<h2 mat-dialog-title align="center">Agregar Nueva Educacion</h2>
+<mat-divider></mat-divider>
+<div class="addForm">
+    <div class="form-container">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Instituto</mat-label>
+            <input matInput [(ngModel)]="company">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Título</mat-label>
+            <input matInput [(ngModel)]="name">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Período de tiempo</mat-label>
+            <input matInput [(ngModel)]="time">
+        </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-card>
+        <mat-card-content>
+            <div class="card-preview">
+                <div class="img">
+                    <img [src]="data.imgurl" alt="Imagen">
+                </div>
+                <div class="text">
+                    <p mat-card-title>{{company}}</p>
+                    <p mat-card-title>{{name}}</p>
+                    <p mat-card-subtitle>{{time}}</p>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="buttons">
+    <button class="add"mat-raised-button color="primary" (click)="closeDialog()">Añadir</button>
+    <button class="cancel" mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+</div>      

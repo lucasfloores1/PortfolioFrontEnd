@@ -1,32 +1,19 @@
-<div id="education-card">
-    <div class="education__img">
-        <img class="education-card__img" src="{{education.img_url}}">
-    </div>
-    <div class="education-card__text">
-        <div class="education-card__institute">
-            <p>{{education.institute}}</p>
+<mat-card class="education-card">
+    <mat-card-content>
+        <div class="card">
+            <div class="img">
+                <img mat-card-image [src]="education.imgurl">
+            </div>
+            <div class="text">
+                <mat-card-title>{{education.institute}}</mat-card-title>
+                <mat-card-title>{{education.title}}</mat-card-title>
+                <mat-card-subtitle>{{education.time}}</mat-card-subtitle>
+            </div>
+            <div class="buttons" *ngIf="showEdit">
+                <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
+                <button mat-mini-fab color="primary" (click)="onDelete(education)" ><mat-icon>delete</mat-icon></button>
+            </div>
         </div>
-        <div class="education-card__title">
-           <p>{{education.title}}</p>
-        </div>
-        <div class="education-card__time">
-                    <p>{{education.time}}</p>
-        </div>
-    </div>
-    <app-education-edit
-        [educationimg]="education.img_url"
-        [educationid]="education.id"
-        (onEditedEducation)="onEditedEducation($event)"
-    ></app-education-edit>
-    <div class="education-card__buttons">
-        <app-edit-btn
-            (click)="toggleEditEducation()"
-        ></app-edit-btn>
-        <app-delete-btn
-        (click) = "onDelete(education)"
-        >
-        </app-delete-btn>
-        <!-- <button class="education-card__del-button">del</button>
-        <button class="education-card__edit-button">edit</button> -->
-    </div>
-</div>
+    </mat-card-content>
+</mat-card>
+

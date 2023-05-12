@@ -1,0 +1,62 @@
+<!-- <form class="education-add-form" (ngSubmit)="onSubmit()" >
+
+    <div class="form-control">
+        <input class="form__field"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Nombre del proyecto"
+            [(ngModel)]="name"
+        >
+        <label for="name" class="form__label">Período</label>
+    </div>
+    
+    <div class="form-control">
+        <input class="form__field"
+            type="text"
+            name="description"
+            id="description"
+            placeholder="Descripcion del proytecto"
+            [(ngModel)]="description"
+        >
+        <label for="description" class="form__label">Institute</label>
+    </div>
+
+    <input type="submit" value="Agregar Experiencia" class="submit-button">
+</form> -->
+
+<h2 mat-dialog-title align="center">Agregar Nuevo Projecto</h2>
+<mat-divider></mat-divider>
+<div class="addForm">
+    <div class="form-container">
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Proyecto</mat-label>
+            <input matInput placeholder="Ej: Aplicación web de tipo stock" [(ngModel)]="data.name">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Descripcion</mat-label>
+            <input matInput placeholder="Ej: Desarrollo Front-End" [(ngModel)]="data.description">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="input">
+            <mat-label>Link del proyecto</mat-label>
+            <input matInput placeholder="Ej: Link de Github o URL" [(ngModel)]="data.link">
+        </mat-form-field>
+    </div>
+    <mat-divider></mat-divider>
+    <mat-card>
+        <mat-card-content>
+            <div class="card-preview">
+                <div class="text">
+                    <div class="title">
+                        <mat-card-title>{{data.name}}</mat-card-title><button mat-mini-fab color="primary" *ngIf="data.link" (click)="redirectToProject(data.link)"><mat-icon>link</mat-icon></button>
+                    </div>
+                    <mat-card-subtitle>{{data.description}}</mat-card-subtitle>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="buttons">
+    <button class="add"mat-raised-button color="primary" [mat-dialog-close]="data">Añadir</button>
+    <button class="cancel" mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+</div>

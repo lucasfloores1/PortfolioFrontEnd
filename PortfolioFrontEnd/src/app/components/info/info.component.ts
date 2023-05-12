@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Info } from '../../Info';
 import { InfoService } from 'src/app/services/info.service';
-import { INFO } from 'src/app/mock-info';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-info',
@@ -10,17 +10,18 @@ import { INFO } from 'src/app/mock-info';
 })
 export class InfoComponent implements OnInit {
   
-  information : Info[]
+  information : Info[] = []
 
-  constructor(private infoService : InfoService){ 
-    this.information = []
+  constructor( public dialog : MatDialog ,private infoService : InfoService , private cdr: ChangeDetectorRef){ 
+    
   }
 
   ngOnInit () : void{
-
-    this.infoService
-    .getInfo()
-    .subscribe((information) => this.information = information )
-
+    this.infoService.getInfo().subscribe((response) => {
+      this.information = response;
+      this.cdr.detectChanges();
+    })
   }
+
+
 }
