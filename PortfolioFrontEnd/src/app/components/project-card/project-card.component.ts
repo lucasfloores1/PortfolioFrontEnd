@@ -11,7 +11,7 @@ import { AuthorizationService } from 'src/app/services/authorization.service';
 })
 export class ProjectCardComponent {
 
-  showEdit : boolean = false
+  showEdit : boolean = this.authService.getIsLoggedIn()
   
   @Output() updatedProject : EventEmitter<Project> = new EventEmitter
 
@@ -69,7 +69,6 @@ export class ProjectCardComponent {
     if (project.link){
       window.open( project.link, '_blank' )
     }
-    console.log(project)
   }
 
 }

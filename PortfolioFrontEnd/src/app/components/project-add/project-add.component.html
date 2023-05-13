@@ -1,31 +1,4 @@
-<!-- <form class="education-add-form" (ngSubmit)="onSubmit()" >
-
-    <div class="form-control">
-        <input class="form__field"
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Nombre del proyecto"
-            [(ngModel)]="name"
-        >
-        <label for="name" class="form__label">Período</label>
-    </div>
-    
-    <div class="form-control">
-        <input class="form__field"
-            type="text"
-            name="description"
-            id="description"
-            placeholder="Descripcion del proytecto"
-            [(ngModel)]="description"
-        >
-        <label for="description" class="form__label">Institute</label>
-    </div>
-
-    <input type="submit" value="Agregar Experiencia" class="submit-button">
-</form> -->
-
-<h2 mat-dialog-title align="center">Agregar Nuevo Projecto</h2>
+<h2 mat-dialog-title align="center">Añadir Nuevo Proyecto</h2>
 <mat-divider></mat-divider>
 <div class="addForm">
     <div class="form-container">
@@ -34,7 +7,7 @@
             <input matInput placeholder="Ej: Aplicación web de tipo stock" [(ngModel)]="data.name">
         </mat-form-field>
         <mat-form-field appearance="fill" class="input">
-            <mat-label>Descripcion</mat-label>
+            <mat-label>Descripción</mat-label>
             <input matInput placeholder="Ej: Desarrollo Front-End" [(ngModel)]="data.description">
         </mat-form-field>
         <mat-form-field appearance="fill" class="input">

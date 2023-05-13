@@ -14,7 +14,7 @@ import { AuthorizationService } from 'src/app/services/authorization.service';
 })
 export class SkillsItemComponent implements OnInit{
 
-  showEdit : boolean = false
+  showEdit : boolean = this.authService.getIsLoggedIn()
   
   @Input() skill : Skills = {
     id: 0,

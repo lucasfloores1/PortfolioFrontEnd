@@ -11,7 +11,7 @@ import { AuthorizationService } from 'src/app/services/authorization.service';
 })
 export class ExperienceCardComponent  implements OnInit{
  
-  showEdit : boolean = false
+  showEdit : boolean = this.authService.getIsLoggedIn()
 
   @Output() updatedExperience : EventEmitter<Experience> = new EventEmitter
 

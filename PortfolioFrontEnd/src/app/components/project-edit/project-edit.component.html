@@ -1,32 +1,4 @@
-<!-- <form class="education-edit-form" (ngSubmit)="onSubmit()">
-
-    <div class="edit-form-container">
-        <div class="form-control-edit">
-            <input class="form__field-edit"
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Nombre del Projecto"
-                [(ngModel)]="name"
-            >
-            <label for="name" class="form__label">Institute</label>
-        </div>
-
-        <div class="form-control-edit">
-            <input class="form__field-edit"
-                type="text"
-                name="description"
-                id="description"
-                placeholder="Descripcion del proyecto"
-                [(ngModel)]="description"
-            >
-            <label for="description" class="form__label">Carrera</label>
-        </div>
-    </div>
-
-    <input type="submit" value="Confirmar" class="submit-button-edit">
-</form> -->
-<h2 mat-dialog-title align="center">Editar Projecto</h2>
+<h2 mat-dialog-title align="center">Editar Proyecto</h2>
 <mat-divider></mat-divider>
 <div class="addForm">
     <div class="form-container">
@@ -35,7 +7,7 @@
             <input matInput [(ngModel)]="name">
         </mat-form-field>
         <mat-form-field appearance="fill" class="input">
-            <mat-label>Descripcion</mat-label>
+            <mat-label>Descripción</mat-label>
             <input matInput [(ngModel)]="description">
         </mat-form-field>
         <mat-form-field appearance="fill" class="input">
@@ -58,6 +30,6 @@
     </mat-card>
 </div>
 <div class="buttons">
-    <button class="add"mat-raised-button color="primary" (click)="closeDialog()">Añadir</button>
+    <button class="add"mat-raised-button color="primary" (click)="closeDialog()">Confirmar</button>
     <button class="cancel" mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
 </div>      

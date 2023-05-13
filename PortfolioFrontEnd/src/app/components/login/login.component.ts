@@ -12,9 +12,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent { 
 
-  user : User = { id : 0 , username:'', password : '' }
+  user : User = { id : 0 , username:'', password : '', name : '', aboutme : '', title : '', bannerurl : '', pfpurl : '' }
 
-  admin : User = { id : 0 , username:'', password : '' }
+  admin : User = { id : 0 , username:'', password : '', name : '', aboutme : '', title : '', bannerurl : '', pfpurl : '' }
 
   constructor( private login_snackbar : MatSnackBar,public authServ : AuthorizationService ,public dialogRef: MatDialogRef<LoginComponent>){}
 

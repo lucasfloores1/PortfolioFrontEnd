@@ -42,6 +42,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from './components/login/login.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { InfoEditComponent } from './components/info-edit/info-edit.component';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SkillsEditComponent,
     SkillsItemComponent,
     LoginComponent,
+    InfoEditComponent,
   ],
   imports: [
     BrowserModule,

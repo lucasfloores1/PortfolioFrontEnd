@@ -4,6 +4,7 @@ import { ProjectService } from 'src/app/services/project.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ProjectAddComponent } from '../project-add/project-add.component';
 import { AuthorizationService } from 'src/app/services/authorization.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-project',
@@ -12,13 +13,13 @@ import { AuthorizationService } from 'src/app/services/authorization.service';
 })
 export class ProjectComponent {
 
-  showEdit : boolean = false
+  showEdit : boolean = this.authService.getIsLoggedIn()
   
   projects : Project[]
 
   private newProject = { id: 0, name : '', description : '', link : '' }
 
-  constructor ( public authService : AuthorizationService ,public dialog : MatDialog, private projectService : ProjectService ) {
+  constructor ( private messageSnackbar : MatSnackBar, public authService : AuthorizationService ,public dialog : MatDialog, private projectService : ProjectService ) {
 
     this.projects = []
 
@@ -35,7 +36,10 @@ export class ProjectComponent {
 
   updateProject(project : Project) : void {
     
-    this.projectService.updateProject(project).subscribe( (response) => {this.updateProjects(response)} )
+    this.projectService.updateProject(project).subscribe( (response) => {
+      this.updateProjects(response)
+      this.messageSnackbar.open( "Proyecto editado con éxito!!!", "X",{ duration: 4000 } )
+    })
 
   }
 
@@ -53,7 +57,8 @@ export class ProjectComponent {
 
     this.projectService.deleteProject(project).subscribe( (response) => {
       this.projects = this.projects.filter( t => t.id !== project.id )
-    }  )
+      this.messageSnackbar.open( "Proyecto borrado con éxito!!!", "X",{ duration: 4000 } )
+    })
     
   }
 
@@ -80,7 +85,11 @@ export class ProjectComponent {
 
     dialogRef.afterClosed().subscribe( response => { 
       if (response){
-      this.projectService.createProject(response).subscribe( response => { this.projects.push(response) } )}
+        this.projectService.createProject(response).subscribe( response => {
+          this.projects.push(response)
+          this.messageSnackbar.open( "Proyecto creado con éxito!!!", "X",{ duration: 4000 } )
+        })
+      }
      })
 
 

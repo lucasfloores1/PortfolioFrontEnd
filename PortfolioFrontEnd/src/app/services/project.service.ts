@@ -14,7 +14,8 @@ const httpOptions = {
 })
 export class ProjectService {
 
-  private apiUrl : string = 'http://localhost:8080/project'
+
+  private apiUrl : string = 'https://portfoliobackend-ea3r.onrender.com/project'
 
   constructor( private http : HttpClient ) { 
 

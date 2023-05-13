@@ -1,16 +1,19 @@
 <div class="container" id="first-section" *ngIf="information">
     <div class="profile-background">
-        <img *ngIf="information[0].bannerurl" src="{{information[0].bannerurl}}">
+        <img *ngIf="information.bannerurl" src="{{information.bannerurl}}">
     </div>
     <div id="ordenador">
         <div class="profile-picture" *ngIf="information">
-            <img [src]="information[0].pfpurl">
+            <img [src]="information.pfpurl">
         </div>
     </div>
     <div class="info-data" *ngIf="information">
         <div class="info-data__container">
-            <h1 id="info-name">{{information[0].name}}</h1>
-            <div id="info-description">{{information[0].description}}</div>
+            <h1 id="info-name">{{information.name}}</h1>
+            <div id="info-description">{{information.title}}</div>
+        </div>
+        <div class="buttons" *ngIf="showEdit">
+            <button mat-mini-fab color="primary" (click)="openDialog()"><mat-icon>edit</mat-icon></button>
         </div>
     </div>
 </div>

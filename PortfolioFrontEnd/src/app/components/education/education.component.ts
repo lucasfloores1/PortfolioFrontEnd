@@ -4,6 +4,7 @@ import { EducationService } from 'src/app/services/education.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddEducationComponent } from '../add-education/add-education.component';
 import { AuthorizationService } from 'src/app/services/authorization.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -14,7 +15,7 @@ import { AuthorizationService } from 'src/app/services/authorization.service';
 })
 export class EducationComponent implements OnInit{
 
-  showEdit : boolean = false
+  showEdit : boolean = this.authService.getIsLoggedIn()
   
   educations : Education[]
 
@@ -27,7 +28,7 @@ export class EducationComponent implements OnInit{
       time : '',      
   }
 
-  constructor(public authService : AuthorizationService, public dialog : MatDialog,private educationService : EducationService){
+  constructor(private messageSnackbar : MatSnackBar ,public authService : AuthorizationService, public dialog : MatDialog,private educationService : EducationService){
 
     this.educations = [];  
 
@@ -46,16 +47,20 @@ export class EducationComponent implements OnInit{
 
   deleteEducation(education : Education) {
 
-    this.educationService.deleteEducation(education).subscribe(()=>(
+    this.educationService.deleteEducation(education).subscribe(()=>{
       this.educations = this.educations.filter( t => t.id !== education.id )
-    )) 
+      this.messageSnackbar.open( "Educación borrada con éxito!!!", "X",{ duration: 4000 } )
+    }) 
 
   }
 
 
   updateEducation(education : Education){
 
-    this.educationService.updateEducation(education).subscribe((response)=>( this.updateEducations(response) ));
+    this.educationService.updateEducation(education).subscribe((response)=>{
+       this.updateEducations(response) 
+       this.messageSnackbar.open( "Educación editada con éxito!!!", "X",{ duration: 4000 } )
+    });
 
   }
 
@@ -81,7 +86,11 @@ export class EducationComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe( response => { 
       if (response){
-      this.educationService.createEducation(response).subscribe( response => { this.educations.push(response) } )}
+        this.educationService.createEducation(response).subscribe( response => {
+          this.educations.push(response)
+          this.messageSnackbar.open( "Educación creada con éxito!!!", "X",{ duration: 4000 } )
+        })
+      }
      })
   }
 

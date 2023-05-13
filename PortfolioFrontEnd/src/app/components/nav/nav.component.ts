@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class NavComponent implements OnInit{
 
-  showEdit : boolean = false
+  showEdit : boolean = this.authService.getIsLoggedIn()
 
   constructor( private login_snackbar : MatSnackBar, public authService : AuthorizationService ,public dialog : MatDialog ){
 
