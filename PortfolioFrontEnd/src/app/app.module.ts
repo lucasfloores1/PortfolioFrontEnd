@@ -10,7 +10,6 @@ import { InfoComponent } from './components/info/info.component';
 import { EducationComponent } from './components/education/education.component';
 import { EducationCardComponent } from './components/education-card/education-card.component';
 import { AddEducationComponent } from './components/add-education/add-education.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EducationEditComponent } from './components/education-edit/education-edit.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
@@ -75,7 +74,6 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatProgressSpinnerModule,
