@@ -1,0 +1,47 @@
+<mat-card>
+    <div class="info-edit">
+        <mat-card-content>
+            <h2 mat-card-title align="center" >Editar Información Personal</h2>
+            <div class="img">
+                <div class="banner">
+                    <img src="{{data.bannerurl}}" alt="">
+                </div>
+                <div class="spacer">
+                    <div class="pfp">
+                        <img mat-card-lg-image  src="{{data.pfpurl}}" alt="">
+                    </div>
+                </div>
+                <div class="text">
+                    <h2>{{data.name}}</h2>
+                    <div class="title">{{data.title}}</div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="info-input">
+                <mat-form-field appearance="fill" class="info-input">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput [(ngModel)]="data.name">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="info-input">
+                    <mat-label>Título</mat-label>
+                    <input matInput [(ngModel)]="data.title">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="info-input">
+                    <mat-label>Dirección Imagen</mat-label>
+                    <input matInput [(ngModel)]="data.pfpurl">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="info-input">
+                    <mat-label>Dirección Banner</mat-label>
+                    <input matInput [(ngModel)]="data.bannerurl">
+                </mat-form-field>
+            </div>
+            <div class="info-preview">
+
+            </div>
+            <div class="info-btn">
+                <button class="del-btn" mat-raised-button color="warn" (click)="onNoClick()">Cancelar</button>
+                <button class="ok-btn" mat-raised-button color="primary" [mat-dialog-close]="data">Confirmar</button>
+            </div>
+        </mat-card-content>
+    </div>
+</mat-card>

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { SkillsAddComponent } from 'src/app/components/skills-add/skills-add.component';
 import { SkillsService } from 'src/app/services/skills.service';
 import { AuthorizationService } from 'src/app/services/authorization.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-skills',
@@ -12,7 +13,7 @@ import { AuthorizationService } from 'src/app/services/authorization.service';
 })
 export class SkillsComponent implements OnInit {
 
-  showEdit : boolean = false;
+  showEdit : boolean = this.authService.getIsLoggedIn()
   
   skills : Skills[]
 
@@ -24,7 +25,7 @@ export class SkillsComponent implements OnInit {
     value : 85,
   };
 
-  constructor( public authService : AuthorizationService ,public dialog: MatDialog, private skillsService : SkillsService ){
+  constructor( private messageSnackbar : MatSnackBar, public authService : AuthorizationService ,public dialog: MatDialog, private skillsService : SkillsService ){
 
     this.skills=[]
 
@@ -52,22 +53,25 @@ export class SkillsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.skillsService.createSkills(result).subscribe( response => { this.skills.push(response) } )
-      });
+      this.skillsService.createSkills(result).subscribe( response => {
+        this.skills.push(response) 
+        this.messageSnackbar.open( "Habilidad creada con éxito!!!", "X",{ duration: 4000 } )
+      })
+    });
   }
 
   updateSkill( updatedSkill : Skills ) : void {
     this.skillsService.updateSkills(updatedSkill)
+    this.messageSnackbar.open( "Habilidad editada con éxito!!!", "X",{ duration: 4000 } )
   }
 
   deleteSkill( skill : Skills ) : void {
     
-    this.skillsService.deleteSkills(skill).subscribe( response => { this.skills = this.skills.filter( t => t.id !== skill.id ) } )
+    this.skillsService.deleteSkills(skill).subscribe( response => {
+       this.skills = this.skills.filter( t => t.id !== skill.id ) 
+       this.messageSnackbar.open( "Habilidad borrada con éxito!!!", "X",{ duration: 4000 } )
+    })
 
   }
-
-
-
-
 
 }

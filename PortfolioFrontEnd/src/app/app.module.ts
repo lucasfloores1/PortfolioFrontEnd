@@ -10,7 +10,6 @@ import { InfoComponent } from './components/info/info.component';
 import { EducationComponent } from './components/education/education.component';
 import { EducationCardComponent } from './components/education-card/education-card.component';
 import { AddEducationComponent } from './components/add-education/add-education.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EducationEditComponent } from './components/education-edit/education-edit.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { ExperienceCardComponent } from './components/experience-card/experience-card.component';
@@ -43,6 +42,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from './components/login/login.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { InfoEditComponent } from './components/info-edit/info-edit.component';
 
 
 @NgModule({
@@ -69,13 +69,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     SkillsEditComponent,
     SkillsItemComponent,
     LoginComponent,
+    InfoEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FontAwesomeModule,
     BrowserAnimationsModule,
     MatCardModule,
     MatProgressSpinnerModule,

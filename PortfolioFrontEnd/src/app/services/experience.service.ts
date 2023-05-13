@@ -14,7 +14,8 @@ const httpOptions = {
 })
 export class ExperienceService {
 
-  private apiUrl : string = 'http://localhost:8080/experience'
+
+  private apiUrl : string = 'https://portfoliobackend-ea3r.onrender.com/experience'
 
   constructor( private http : HttpClient ) { 
 

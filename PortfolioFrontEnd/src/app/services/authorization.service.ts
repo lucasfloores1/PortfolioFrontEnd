@@ -14,7 +14,8 @@ const httpOptions = {
 })
 export class AuthorizationService {
 
-  private apiUrl : string = 'http://localhost:8080/admin'
+
+  private apiUrl : string = 'https://portfoliobackend-ea3r.onrender.com/user'
 
   private isLoggedIn : boolean = false;
 
@@ -24,7 +25,7 @@ export class AuthorizationService {
 
   getAdmin(): Observable<User>{
 
-    return this.http.get<User>( `${this.apiUrl}/load/2` );
+    return this.http.get<User>( `${this.apiUrl}/load/1` );
 
   }
 

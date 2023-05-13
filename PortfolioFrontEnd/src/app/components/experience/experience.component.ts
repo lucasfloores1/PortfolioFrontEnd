@@ -4,6 +4,7 @@ import { ExperienceService } from 'src/app/services/experience.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ExperienceAddComponent } from '../experience-add/experience-add.component';
 import { AuthorizationService } from 'src/app/services/authorization.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-experience',
@@ -12,13 +13,13 @@ import { AuthorizationService } from 'src/app/services/authorization.service';
 })
 export class ExperienceComponent implements OnInit {
 
-  showEdit : boolean = false
+  showEdit : boolean = this.authService.getIsLoggedIn()
 
   experiences : Experience[]
 
   private newExperience : Experience = { id: 0, imgurl : '' , company : '', name : '', time : '' }
 
-  constructor ( public authService : AuthorizationService ,public dialog : MatDialog , private experienceService : ExperienceService ) {
+  constructor (private messageSnackbar : MatSnackBar, public authService : AuthorizationService ,public dialog : MatDialog , private experienceService : ExperienceService ) {
 
     this.experiences = []
 
@@ -35,7 +36,10 @@ export class ExperienceComponent implements OnInit {
 
   updateExperience(experience : Experience) : void {
     
-    this.experienceService.updateExperience(experience).subscribe( (response) => {this.updateExperiences(response)} )
+    this.experienceService.updateExperience(experience).subscribe( (response) => {
+      this.updateExperiences(response)
+      this.messageSnackbar.open( "Experiencia editada con éxito!!!", "X",{ duration: 4000 } )
+    })
 
   }
 
@@ -53,16 +57,8 @@ export class ExperienceComponent implements OnInit {
 
     this.experienceService.deleteExperience(experience).subscribe( (response) => {
       this.experiences = this.experiences.filter( t => t.id !== experience.id )
-    }  )
-    
-  }
-
-
-  createExperience(experience : Experience): void {
-
-    this.experienceService.createExperience(experience).subscribe( response =>{
-      this.experiences.push(response)
-   })
+      this.messageSnackbar.open( "Experiencia borrada con éxito!!!", "X",{ duration: 4000 } )
+    })
     
   }
 
@@ -80,7 +76,11 @@ export class ExperienceComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe( response => { 
       if (response){
-      this.experienceService.createExperience(response).subscribe( response => { this.experiences.push(response) } )}
+        this.experienceService.createExperience(response).subscribe( response => {
+          this.experiences.push(response)
+          this.messageSnackbar.open( "Experiencia creada con éxito!!!", "X",{ duration: 4000 } ) 
+        })
+      }
      })
 
   }

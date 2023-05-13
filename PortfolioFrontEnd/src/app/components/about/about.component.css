@@ -1,0 +1,38 @@
+#about-title{
+    padding: 5px;
+}
+
+#about-title h2{
+    font-size: 22px;
+}
+
+#about-text {
+    padding: 5px;
+    font-size: 15px;
+    text-decoration: none;
+}
+#about__button{
+    margin-right: 20px;
+    display: flex;
+    height: fit-content;
+    flex-direction: row-reverse;
+}
+
+#about-text{
+    width: 100%;
+}
+
+#about-title{
+    width: 80%;
+}
+
+.about{
+    justify-content: space-between;
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    padding: 5px;
+}

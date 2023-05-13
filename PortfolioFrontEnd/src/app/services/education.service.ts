@@ -15,7 +15,8 @@ const httpOptions = {
 
 export class EducationService {
 
-  private apiUrl : string = 'http://localhost:8080/education'
+
+  private apiUrl : string = 'https://portfoliobackend-ea3r.onrender.com/education'
 
   constructor( private http : HttpClient ) { }
 

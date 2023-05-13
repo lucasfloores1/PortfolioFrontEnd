@@ -12,7 +12,7 @@ import { AuthorizationService } from 'src/app/services/authorization.service';
 })
 export class EducationCardComponent implements OnInit{
 
-  showEdit : boolean = false
+  showEdit : boolean = this.authService.getIsLoggedIn()
 
   @Input() education : Education = { id: 0, imgurl : '', institute : '' , title : '', time : '' }
 

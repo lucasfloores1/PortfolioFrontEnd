@@ -13,7 +13,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class SkillsService {
-  private apiUrl : string = 'http://localhost:8080/skills'
+ 
+  private apiUrl : string = 'https://portfoliobackend-ea3r.onrender.com/skills'
 
   constructor( private http : HttpClient ) { 
 
